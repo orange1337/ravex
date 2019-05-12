@@ -17,6 +17,8 @@ RUN cd /home/ravex && npm install
 RUN cd /home/ravex/server && npm install
 RUN cd /home/ravex && ng build --configuration=${CONFIG_NET}
 
-CMD ["pm2-runtime", "/home/ravex/server/ecosystem.config.js", "--web"]
+#CMD ["pm2-runtime", "/home/ravex/server/ecosystem.config.js", "--web"]
+
+CMD ["pm2-runtime", "/home/ravex/server/server.js"]
 
 EXPOSE ${PORT}

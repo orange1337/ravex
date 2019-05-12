@@ -32,7 +32,7 @@ iframe body{
 }
 /*------------- dark theme -------------*/
 .crypt-dark{
-    background: #0e162d;
+    background: #090e29;
 }
 .crypt-dark .icon-big{
     color: #fff;
@@ -83,12 +83,12 @@ g[opacity="0.4"]{
 }
 .crypt-logo{
     height: 100%;
-    padding: 14px 15px;
-    background: linear-gradient(to left, #0e162d9e, #1f2843);
+    padding: 24px 25px;
+    background: #0c0e42; //linear-gradient(to left, #0e162d9e, #1f2843);
     margin-left: 15px;
 }
 .crypt-logo img{
-    width: 180px !important;
+    width: 100px !important;
 }
 /*--- colors ----*/
 .crypt-yellow{
@@ -370,13 +370,13 @@ body.crypt-dark .crypt-boxed-area{
 }
 .crypt-dark .crypt-header{
     box-shadow: none;
-    background: #202943;
+    background: #0e1846;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 9999;
-    height: 70px;
+    height: 72px;
     color: #fff;
 }
 .crypt-dark .crypt-mega-dropdown-menu{

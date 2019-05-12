@@ -12,6 +12,10 @@ const routes: Routes = [
       loadChildren : './pages/home/home.module#HomeModule'
    },
    {
+      path : 'exchange',
+      loadChildren : './pages/exchange/exchange.module#ExchangeModule'
+   },
+   {
       path: '**',
       redirectTo: ''
    }

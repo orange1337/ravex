@@ -26,6 +26,7 @@ body{
     overflow-x: hidden;
     margin-top: 65px;
     font-size: 13px;
+    color: #fff;
 }
 iframe body{
     margin: 0;
@@ -83,7 +84,7 @@ g[opacity="0.4"]{
 }
 .crypt-logo{
     height: 100%;
-    padding: 24px 25px;
+    padding: 25px;
     background: #0c0e42; //linear-gradient(to left, #0e162d9e, #1f2843);
     margin-left: 15px;
 }
@@ -694,22 +695,22 @@ body.crypt-dark .crypt-market-status{
 body.crypt-dark ul.nav-tabs{
     padding: 13px 0px;
     border: none;
-    background: #1f2638;
+    background: #0d0e42;
 }
 body.crypt-dark ul.nav-tabs li{
-    padding: 0 13px;
+    padding: 0 10px;
 }
 body.crypt-dark ul.nav-tabs li a{
     color: #fff;
     font-weight: 600;
     text-transform: uppercase;
     text-decoration: none;
-    padding-bottom: 12px;
+    padding: 12px 7px;
     font-size: 13px;
 }
 body.crypt-dark ul.nav-tabs li{}
 body.crypt-dark ul.nav-tabs li a.active{
-    border-bottom: 3px solid #f7614e;
+    border-bottom: 2px solid #1c2775;
 }
 body.crypt-dark .tab-content table{
     margin-bottom: 0;

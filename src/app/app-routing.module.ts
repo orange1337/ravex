@@ -12,7 +12,7 @@ const routes: Routes = [
       loadChildren : './pages/home/home.module#HomeModule'
    },
    {
-      path : 'exchange',
+      path : 'trade',
       loadChildren : './pages/exchange/exchange.module#ExchangeModule'
    },
    {

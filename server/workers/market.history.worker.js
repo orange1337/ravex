@@ -77,18 +77,6 @@ async function saveOrders(data){
 			delete globalHashes[hash];
 		} else {
 			globalHashes[hash] = true;
-			if ( (act.name === 'offer' || act.name === 'cancel') && ifArray) {
-				let owner = act.data.newowner ? act.data.newowner : act.data.owner;
-				sendSocketUpdate(act, 'market');
-				await wrapper.toLite(SELLS_DB.updateMany({ assetId: { $in: act.data.assetids } }, { active: false, owner }));
-			}
-			if ( (act.name === 'transfer' && act.account === 'eosio.token' && act.data.to === config.market && (act.data.memo.indexOf('nftid') >= 0 || act.data.memo.indexOf('ftid') >= 0) ) ||
-				 (act.name === 'transfer' && act.account === config.assets && act.data.to === config.market) || 
-				 act.name === 'cancel')  
-			{
-				delete elem._id;
-				await wrapper.toLite(ORDERS_DB.updateOne({ uniqueHash: hash }, elem.action_trace, { upsert: true }));
-			}
 			if ( (act.name === 'transferf' && act.data.from === config.market && act.data.memo.indexOf('sellid') >= 0) || 
 				 (act.account === 'eosio.token' && act.name === 'transfer' && act.data.to === config.market && act.data.memo.indexOf('ftid') >= 0) ||
 				 (act.name === 'offerf' && act.data.owner === config.market) 

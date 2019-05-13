@@ -2,7 +2,7 @@
  * API for Fungible Tokens, created by orange1337
  */
 
-module.exports = function(router, config, request, mongoMain, eos, wrapper) {
+module.exports = function(router, config, request, log, mongoMain, eos, wrapper) {
 
 	const elemLimit = config.daemons.limitSells;
 	const limitPurchases = 20;
@@ -71,7 +71,7 @@ module.exports = function(router, config, request, mongoMain, eos, wrapper) {
 
 		let [err, items] = await wrapper.to(SELLS_FT_DB.aggregate(query));
 		if (err){
-			console.error(err);
+			log.error(err);
 			return res.status(500).end();
 		}
 		res.json(items);
@@ -102,7 +102,7 @@ module.exports = function(router, config, request, mongoMain, eos, wrapper) {
 		let [err, orders] = await sellsf;
 		let [errT, tokenInfo] = await token;
 		if (err || errT){
-			console.error(err || errT);
+			log.error(err || errT);
 			return res.status(500).end();
 		}
 		res.json({orders, tokenInfo});
@@ -127,7 +127,7 @@ module.exports = function(router, config, request, mongoMain, eos, wrapper) {
 	    ]
 		let [err, items]  = await wrapper.to(SELLS_FT_DB.aggregate(query)); //.limit(limitPopular)
 		if (err){
-			console.error(err);
+			log.error(err);
 			return res.status(500).end();
 		}
 		res.json(items);
@@ -155,7 +155,7 @@ module.exports = function(router, config, request, mongoMain, eos, wrapper) {
 
 		let [err, items] = await wrapper.to(SELLS_FT_DB.aggregate(query));
 		if (err){
-			console.error(err);
+			log.error(err);
 			return res.status(500).end();
 		}
 		res.json(items);
@@ -174,7 +174,7 @@ module.exports = function(router, config, request, mongoMain, eos, wrapper) {
 		let match = { owner, active: true };
 		let [err, items] = await wrapper.to(assetJoinQuery(SELLS_FT_DB, match, skip, limit));
 		if (err){
-			console.error(err);
+			log.error(err);
 			return res.status(500).end();
 		}
 		res.json(items);
@@ -184,7 +184,7 @@ module.exports = function(router, config, request, mongoMain, eos, wrapper) {
 		let ids = req.body.ftids;
 		let [err, items] = await wrapper.to(ASSETS_FT_DB.find({ ftid: { $in: ids } }, 'ftid data symbol issuer'));
 		if (err){
-			console.error(err);
+			log.error(err);
 			return res.status(500).end();
 		}
 		res.json(items);
@@ -204,7 +204,7 @@ module.exports = function(router, config, request, mongoMain, eos, wrapper) {
 
 		let [err, items] = await wrapper.to(assetJoinQuery(SELLS_FT_DB, match, skip, limit));
 		if (err){
-			console.error(err);
+			log.error(err);
 			return res.status(500).end();
 		}
 		res.json(items);
@@ -224,7 +224,7 @@ module.exports = function(router, config, request, mongoMain, eos, wrapper) {
 
 		let [err, items] = await wrapper.to(assetJoinQuery(CLAIMS_FT_DB, match, skip, limit));
 		if (err){
-			console.error(err);
+			log.error(err);
 			return res.status(500).end();
 		}
 		res.json(items);
@@ -244,7 +244,7 @@ module.exports = function(router, config, request, mongoMain, eos, wrapper) {
 
 		let [err, items] = await wrapper.to(assetJoinQuery(CLAIMS_FT_DB, match, skip, limit));
 		if (err){
-			console.error(err);
+			log.error(err);
 			return res.status(500).end();
 		}
 		res.json(items);
@@ -261,7 +261,7 @@ module.exports = function(router, config, request, mongoMain, eos, wrapper) {
 			orders = await orders;
 			cancel = await cancel;
 		} catch(e){
-			console.error(err);
+			log.error(err);
 			return res.status(500).end();
 		}
 		res.json({orders, claims, cancel});

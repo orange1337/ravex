@@ -19,12 +19,15 @@ const logSlack      = customSlack.configure(config.loggerSlack.alerts);
 const EOS           = require('eosjs');
 const eos           = EOS(config.eosConfig);
 
+const { asyncWrapper, logWrapper } = require('./utils/main.utils');
+const log       = new logWrapper(`server`);
+const wrapper   = new asyncWrapper(`server`);
+
 process.on('uncaughtException', (err) => {
     logSlack(` ======= UncaughtException Main Server : `, err);
 });
 
-const mongoMain = require('./db/init.db').connect();
-
+const mongoMain = require('./db/init.db').connect(log);
 /**
  * PM2 Metrics
  */
@@ -57,9 +60,7 @@ server.on('listening', onListening);
 app.use(express.static(path.join(__dirname, '../dist')));
 
 // ################### Main API
-const { asyncWrapper } = require('./utils/main.utils');
-const wrapper          = new asyncWrapper();
-require(`./api/sm.api.${config.apiV}`)(app, config, request, mongoMain, eos, wrapper);
+require(`./api/sm.api.${config.apiV}`)(app, config, request, log, mongoMain, eos, wrapper);
 
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../dist/index.html'));
@@ -73,7 +74,7 @@ app.use((req, res, next) => {
   req.io = io;
   next();
 });
-require(`./api/socket.api.${config.apiV}`)(io, app, config, request, mongoMain, eos, metrics);
+require(`./api/socket.api.${config.apiV}`)(io, app, config, request, log, mongoMain, eos, metrics, wrapper);
 //################### end of socket io connection
 
 // ################### catch 404 and forward to error handler
@@ -87,7 +88,7 @@ app.use((req, res, next) => {
 app.use((err, req, res, next) => {
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
-  console.error('===== Page not Found ', err);
+  log.error('===== Page not Found ', err);
   res.status(404).send('Page not found!');
 });
 
@@ -104,10 +105,10 @@ function onError(error) {
   let bind = typeof port === 'string' ? `Pipe ${port}` : `Port ${port}`;
   switch (error.code) {
     case 'EACCES':
-      console.error(`${bind} requires elevated privileges`);
+      log.error(`${bind} requires elevated privileges`);
       break;
     case 'EADDRINUSE':
-      console.error(`${bind} is already in use`);
+      log.error(`${bind} is already in use`);
       break;
     default:
       throw error;
@@ -117,5 +118,5 @@ function onListening() {
   let addr = server.address();
   let bind = typeof addr === 'string' ? `pipe ${addr}` : `port ${addr.port}`;
   debug(`Listening on ${bind}`);
-  console.log(`Listening on ${bind}`);
+  log.info(`Listening on ${bind}`);
 }

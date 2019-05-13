@@ -12,6 +12,16 @@ var API = new mongoose.Schema({
   cursor_history: {
     type: Number,
     default: 0 
+  },
+  cursor_history_time: {
+    type: Date
+  },
+  cursor_assets: {
+    type: Number,
+    default: 0 
+  },
+  cursor_assets_time: {
+    type: Date
   }
 });
 

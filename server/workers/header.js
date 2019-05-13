@@ -17,6 +17,10 @@ module.exports = (loggerFileName) => {
 	const customSlack = require('../modules/slack.module');
 	const logSlack    = customSlack.configure(config.loggerSlack.alerts);
 
+	const { asyncWrapper, asyncForEach, logWrapper } = require('../utils/main.utils');
+	const log = new logWrapper(loggerFileName);
+	const wrapper = new asyncWrapper(loggerFileName);
+
 	process.on('uncaughtException', (err) => {
     	logSlack(`======= UncaughtException ${loggerFileName} saemon : ${err}`);
 	});
@@ -31,9 +35,6 @@ module.exports = (loggerFileName) => {
 		ASSETS_FT_DB,
 		CLAIMS_FT_DB
 	} = require('../db/init.db').connect(log);
-
-	const { asyncWrapper, asyncForEach } = require('../utils/main.utils');
-	const wrapper = new asyncWrapper(log);
 
 	function sendSocketUpdate(act, uri){
 		let options = {

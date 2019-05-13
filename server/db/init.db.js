@@ -3,22 +3,22 @@
 */
 const configName    = (process.env.CONFIG_NAME) ? process.env.CONFIG_NAME : 'config';
 const config        = require(`../${configName}`);
-
+		
 const mongoose      = require("mongoose");
 mongoose.Promise  	= global.Promise;
 
-const connect = () => {
+const connect = (log) => {
 	const mongoMain = mongoose.createConnection(config.MONGO_URI, config.MONGO_OPTIONS,
 	 (err) => {
 	    if (err){
-	      console.error(err);
+	      log.error(err);
 	      process.exit(1);
 	    }
-	    console.log(`[Connected to Mongo]`);
+	    log.info(`Connected to mongoDB`);
 	});
 
-	const SETTINGS_DB  		= require('./schemas/global.model')(mongoMain);
-	const ORDERS_DB    		= require('./schemas/orders.model')(mongoMain);
+	const SETTINGS_DB   = require('./schemas/global.model')(mongoMain);
+	const ORDERS_DB     = require('./schemas/orders.model')(mongoMain);
 
 	/**
 	 * Fungible Tokens Tables

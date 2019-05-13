@@ -1,5 +1,99 @@
 @import '~@angular/material/theming';
 @import './assets/scss/style.dark.scss';
+
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue.
+/* For use in src/lib/core/theming/_palette.scss */
+/* For use in src/lib/core/theming/_palette.scss */
+$md-mcgpalette0: (
+    50 : #e5fafb,
+    100 : #bef3f4,
+    200 : #93eced,
+    300 : #68e4e6,
+    400 : #47dee0,
+    500 : #27d8db,
+    600 : #23d4d7,
+    700 : #1dced2,
+    800 : #17c8cd,
+    900 : #0ebfc4,
+    A100 : #f1ffff,
+    A200 : #befdff,
+    A400 : #8bfbff,
+    A700 : #71faff,
+    contrast: (
+        50 : #ffffff,
+        100 : #ffffff,
+        200 : #ffffff,
+        300 : #ffffff,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #ffffff,
+        A200 : #ffffff,
+        A400 : #ffffff,
+        A700 : #ffffff,
+    )
+);
+
+$md-mcgpalette1: (
+    50 : #e1f4ed,
+    100 : #b3e3d1,
+    200 : #80d1b3,
+    300 : #4dbe94,
+    400 : #27b07d,
+    500 : #01a266,
+    600 : #019a5e,
+    700 : #019053,
+    800 : #018649,
+    900 : #007538,
+    A100 : #a3ffc7,
+    A200 : #70ffa8,
+    A400 : #3dff89,
+    A700 : #24ff7a,
+    contrast: (
+        50 : #ffffff,
+        100 : #ffffff,
+        200 : #ffffff,
+        300 : #ffffff,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #ffffff,
+        A200 : #ffffff,
+        A400 : #ffffff,
+        A700 : #ffffff,
+    )
+);
+
+
+
+$dark-primary: mat-palette($md-mcgpalette0);
+$dark-accent:  mat-palette($md-mcgpalette1);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$cdark-theme: mat-dark-theme($dark-primary, $dark-accent);
+
+$white-color: #fff;
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($cdark-theme);
+
 /* You can add global styles to this file, and also import other style files */
 @font-face {
   font-family: ClanProNews;
@@ -11,7 +105,26 @@ html, body {
 	margin: 0;
 }
 body { 
-	margin: 0; 
+	margin-top: 100px; 
 	font-family: "ClanProNews", "Helvetica Neue", sans-serif;
 	-webkit-font-smoothing: antialiased; 
 }
+.mat-header-row, .mat-row{
+    height: 30px !important;
+}
+.mat-table{
+    width: 100%;
+    background: #0f1b4c;
+}
+.mat-row:nth-child(even){
+    background-color: #0f1749;
+}
+.mat-row:nth-child(odd){
+    background-color: #111d50;
+}
+
+
+
+
+
+

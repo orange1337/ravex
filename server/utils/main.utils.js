@@ -7,7 +7,10 @@ class logWrapper {
 		this.logName = logName;
 	}
 	info (result){
-		console.log(`[${this.logName}]`, result);
+		console.log('\x1b[36m%s\x1b[0m', `[${new Date().toISOString()}] ${this.logName} -`, result);
+	}
+	error (result){
+		console.error('\x1b[33m%s\x1b[0m', `[${new Date().toISOString()}] ${this.logName} - `, result);
 	}
 }
 
@@ -44,4 +47,4 @@ async function asyncForEach(arr, cb) {
     }
 }
 
-module.exports = { asyncWrapper, asyncForEach };
+module.exports = { asyncWrapper, asyncForEach, logWrapper };

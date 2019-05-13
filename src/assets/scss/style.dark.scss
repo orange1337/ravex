@@ -386,14 +386,16 @@ body.crypt-dark .crypt-boxed-area{
     color: #ffffff;
     display: inline-block;
     font-weight: 600;
-    padding: 25px 20px;
+    padding: 10px 20px;
+    margin: 15px 0px;
     text-decoration: none;
     outline: none;
     font-size: 15px;
-    border-right: 1px solid #202943;
+    border-right: 1px solid #1d2855;
 }
 .crypt-dark .crypt-mega-dropdown-menu a.crypt-mega-dropdown-toggle i{
     font-weight: 600;
+    font-size: 13px;
 }
 .crypt-dark .crypt-mega-dropdown-menu a.crypt-mega-dropdown-toggle:hover{
     text-decoration: none;
@@ -464,7 +466,7 @@ body.crypt-dark .crypt-boxed-area{
     float: right;
 }
 .crypt-dark .crypt-heading-menu li{
-    margin: 0 -18px;
+    margin: 0 0px;
     padding: 0 10px; 
 }
 .crypt-dark .crypt-heading-menu li{
@@ -472,25 +474,43 @@ body.crypt-dark .crypt-boxed-area{
     text-transform: uppercase;
     font-size: 14px;
     font-weight: 600;
-    margin-right: 16px;
+    margin-right: 12px;
 }
 .crypt-dark .crypt-heading-menu li.active{
 }
 .crypt-dark .crypt-heading-menu li a{
-    color: #fff;
+    color: #394670;
     text-decoration: none;
     transition: all 0.4s ease;
-    padding: 9px 0px;
+    padding: 12px 0px 23px 0px;
     display: inline-block;
-    font-size: 11px;
+    font-size: 12px;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+.crypt-dark .crypt-heading-menu .crypt-active{
+    color: #27d8db;
+    border-bottom: 2px solid #27d8db;
 }
 .crypt-dark .crypt-heading-menu li a:hover{
-    color: #f7614e;
-    border-bottom: 1px solid #f7614e;
+    color: #27d8db;
+    border-bottom: 2px solid #27d8db;
 }
 .crypt-dark .crypt-heading-menu li.active a{
     color: #f7614e;
     border-bottom: 1px solid #f7614e;
+}
+.crypt-dark .btn-login{
+    background: rgba(1, 162, 102, 0.2);
+    color: #01a266 !important;
+    border: 1px solid #01a266;
+    border-radius: 5px;
+    padding: 7px 22px !important;
+}
+.crypt-dark .hr-right{
+    border-right: 1px solid #1d2755;
+    margin-right: 15px;
+    padding: 12px 0px;
 }
 
 .menu-red{

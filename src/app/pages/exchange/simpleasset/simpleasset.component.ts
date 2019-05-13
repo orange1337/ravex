@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MainService } from '../../../../services/main.service';
 
 @Component({
   selector: 'app-simpleasset',
@@ -7,23 +8,37 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SimpleassetComponent implements OnInit {
 
-  constructor() { }
+  constructor(public mainService: MainService) { }
 
   displayedColumns = ['symbol', 'price', 'change', 'volume'];
-  dataSource = [
-	  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-	  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-	  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-	  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-	  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-	  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-	  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-	  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-	  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-	  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-  ];
+  displayedColumnsSells = ['price', 'qty', 'total'];
+  dataSource;
+  dataSourceSells;
+  author = 'prospectorsa';
+  symbol = 'PTS';
+
+  getCoinsTable(){
+  		this.mainService.getSAcoins()
+  						.subscribe(res => {
+  							this.dataSource = this.mainService.generetCoinsArr(res);
+  						}, err => {	
+  							console.error(err);
+  						})
+  }
+
+  getOrderSells(){
+  		this.mainService.getSAsells(this.author, this.symbol)
+  						.subscribe((res: any) => {
+  							this.dataSourceSells = res.orders;
+  						}, err => {	
+  							console.error(err);
+  						})
+  }
 
   ngOnInit() {
+  	this.getCoinsTable();
+  	this.getOrderSells();
   }
+
 
 }

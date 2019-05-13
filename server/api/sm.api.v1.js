@@ -92,7 +92,7 @@ module.exports = function(router, config, request, log, mongoMain, eos, wrapper)
 		let query = [
 			{ $match: { active: true, author, symbol } },
 			{ $addFields: { priceOne: { $divide: [ "$priceNum", "$qtyNum" ] } } },
-			{ $sort: { priceOne: 1 } },
+			{ $sort: { priceOne: -1 } },
 			{ $skip: skip },
 			{ $limit: limit }
 		];

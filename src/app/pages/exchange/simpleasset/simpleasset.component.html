@@ -1,9 +1,11 @@
 <div class="container-fluid">
     <div class="row sm-gutters">
-		<div class="col-md-6 col-lg-6 col-xl-3 col-xxl-2">
+		
+		<div class="col-md-6 col-lg-6 col-xl-3 col-xxl-2 right-container">
 			<ul class="nav nav-tabs" id="crypt-tab">
-                <li role="presentation"><a class="active show" data-toggle="tab">EOS</a></li>
-                <li role="presentation"><a data-toggle="tab" class="">MEETONE</a></li>
+                <li role="presentation"><a class="active">EOS</a></li>
+                <li role="presentation"><a>Meetone</a></li>
+                <!--<li role="presentation"><a data-toggle="tab" class="">MEETONE</a></li>-->
             </ul>
 			<div class="example-container mat-elevation-z8">
 			  <table mat-table [dataSource]="dataSource">
@@ -11,25 +13,28 @@
 			    <!-- Position Column -->
 			    <ng-container matColumnDef="symbol">
 			      <th mat-header-cell *matHeaderCellDef> Symbol </th>
-			      <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+			      <td mat-cell *matCellDef="let element">
+			      	<img src="{{element?.image}}" class="coin-image" alt="">
+			        {{element?.symbol}} 
+			   	  </td>
 			    </ng-container>
 			
 			    <!-- Name Column -->
 			    <ng-container matColumnDef="price">
-			      <th mat-header-cell *matHeaderCellDef> Price </th>
-			      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+			      <th mat-header-cell *matHeaderCellDef> Price (EOS) </th>
+			      <td mat-cell *matCellDef="let element"> {{element?.price}} </td>
 			    </ng-container>
 			
 			    <!-- Weight Column -->
 			    <ng-container matColumnDef="change">
-			      <th mat-header-cell *matHeaderCellDef> Change </th>
-			      <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+			      <th mat-header-cell *matHeaderCellDef> 24h % </th>
+			      <td mat-cell *matCellDef="let element"> {{element?.change || 0}}% </td>
 			    </ng-container>
 			
 			    <!-- Symbol Column -->
 			    <ng-container matColumnDef="volume">
-			      <th mat-header-cell *matHeaderCellDef> Volume </th>
-			      <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+			      <th mat-header-cell *matHeaderCellDef> 24h Vol. </th>
+			      <td mat-cell *matCellDef="let element"> {{element?.volume || 0}} </td>
 			    </ng-container>
 			
 			    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
@@ -37,5 +42,74 @@
 			  </table>
 			</div>
 		</div>
+
+		<div class="col-md-6 col-lg-6 col-xl-6 col-xxl-8">
+                <!--<div class="crypt-gross-market-cap">
+                    <div class="row">
+                        <div class="col-3 col-sm-6 col-md-6 col-lg-6">
+                            <div class="row">
+                                <div class="col-sm-6 col-md-6 col-lg-6">
+                                    <p>Last Price BTC</p>
+                                    <p>0.0234230 $0.04</p>
+                                </div>
+                                <div class="col-sm-6 col-md-6 col-lg-6">
+                                    <p>Change BTC</p>
+                                    <p class="crypt-down">-0.0234230 -3.35%</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3 col-sm-2 col-md-3 col-lg-2">
+                            <p>High BTC</p>
+                            <p class="crypt-up">0.435453</p>
+                        </div>
+                        <div class="col-3 col-sm-2 col-md-3 col-lg-2">
+                            <p>Low BTC</p>
+                            <p class="crypt-down">0.09945</p>
+                        </div>
+                        <div class="col-3 col-sm-2 col-md-3 col-lg-2">
+                            <p>Volume 24Hr</p>
+                            <p class="crypt-down">12.33445</p>
+                        </div>
+                    </div>
+                </div>-->
+                <div class="tradingview-widget-container">
+                    <app-tv-chart-container></app-tv-chart-container>
+                </div>
+                <!--<div id="depthchart" class="depthchart h-40 crypt-dark-segment"></div>-->
+        </div>
+
+        <div class="col-md-6 col-lg-6 col-xl-3 col-xxl-2 left-container">
+            <ul class="nav nav-tabs" id="crypt-tab">
+                <li role="presentation"><a class="active">order book</a></li>
+                <li role="presentation"><a>trade history</a></li>
+                <!--<li role="presentation"><a data-toggle="tab" class="">MEETONE</a></li>-->
+            </ul>
+            <div class="example-container mat-elevation-z8">
+              <table mat-table [dataSource]="dataSourceSells">
+            
+                <!-- Name Column -->
+                <ng-container matColumnDef="price">
+                  <th mat-header-cell *matHeaderCellDef> Price (EOS) </th>
+                  <td mat-cell *matCellDef="let element" class="main-red"> {{element?.priceNum?.toFixed(6)}} </td>
+                </ng-container>
+            
+                <!-- Weight Column -->
+                <ng-container matColumnDef="qty">
+                  <th mat-header-cell *matHeaderCellDef> Qty </th>
+                  <td mat-cell *matCellDef="let element"> {{element?.qtyNum?.toFixed(6)}} </td>
+                </ng-container>
+            
+                <!-- Symbol Column -->
+                <ng-container matColumnDef="total">
+                  <th mat-header-cell *matHeaderCellDef class="text-right"> Total(EOS) </th>
+                  <td mat-cell *matCellDef="let element" class="text-right"> {{(element?.priceNum * element?.qtyNum)?.toFixed(6)}} </td>
+                </ng-container>
+            
+                <tr mat-header-row *matHeaderRowDef="displayedColumnsSells; sticky: true"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumnsSells;"></tr>
+              </table>
+            </div>
+        </div>
+
 	</div>
 </div>

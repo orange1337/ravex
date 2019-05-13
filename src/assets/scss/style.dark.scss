@@ -53,7 +53,7 @@ iframe body{
     color: #fff;
 }
 .crypt-dark-segment{
-    background: #131722;
+    background: #0f1b4c;
 }
 .crypt-deepblue-segment{
     background: #131a33;
@@ -167,7 +167,7 @@ body.crypt-dark .crypt-btn:hover{
     display: inline-block;
 } 
 .crypt-btn-green{
-    background: #49c279;
+    background: #48c079;
     color: #fff;
 } 
 .crypt-btn-red{
@@ -200,16 +200,16 @@ body.crypt-dark .crypt-boxed-area{
 }
 
 .crypt-up{
-    color: #49c279 !important;
+    color: #48c079 !important;
 }
 .crypt-down{
-    color: red !important;
+    color: #f86050 !important;
 }
 .padding-left{
     padding-left: 30px;
 }
 .crypt-button-green-full{
-    background: #49c279;
+    background: #48c079;
     color: #fff;
     padding: 9px;
     text-align: center;
@@ -300,7 +300,7 @@ body.crypt-dark .crypt-boxed-area{
 }
 
 .crypt-gross-market-cap{
-    margin: 15px 0 20px 0;
+    margin-bottom: 20px;
 }
 .crypt-gross-market-cap p:first-child{
     margin-bottom: 5px;
@@ -432,7 +432,7 @@ body.crypt-dark .crypt-boxed-area{
 
 .crypt-dark .crypt-gross-market-cap {
     padding: 25px;
-    background: #1f2638;
+    background: #0c0d42;
 }
 .crypt-dark .crypt-gross-market-cap p:first-child{
     margin-bottom: 5px;
@@ -525,7 +525,7 @@ body.crypt-dark .crypt-boxed-area{
     background: #e2513e;
 }
 .menu-green{
-    background: #49c279;
+    background: #48c079;
 }
 .menu-green a{
     color: #fff !important;
@@ -693,7 +693,7 @@ body.crypt-dark .crypt-market-status{
     box-shadow: none;
 }
 body.crypt-dark ul.nav-tabs{
-    padding: 13px 0px;
+    padding: 10px 0px;
     border: none;
     background: #0d0e42;
 }
@@ -705,8 +705,8 @@ body.crypt-dark ul.nav-tabs li a{
     font-weight: 600;
     text-transform: uppercase;
     text-decoration: none;
-    padding: 12px 7px;
-    font-size: 13px;
+    padding: 10px 7px;
+    font-size: 12px;
 }
 body.crypt-dark ul.nav-tabs li{}
 body.crypt-dark ul.nav-tabs li a.active{
@@ -716,15 +716,15 @@ body.crypt-dark .tab-content table{
     margin-bottom: 0;
 }
 body.crypt-dark .tab-content table thead{
-    background: #131722;
+    background: #0f1b4c;
     color: #fff;
 }
 body.crypt-dark .tab-content table thead tr{
     cursor: none;
-    background: #131722 !important;
+    background: #0f1b4c !important;
 }
 body.crypt-dark .tab-content table thead tr:hover{
-    background: #131722 !important;
+    background: #0f1b4c !important;
 
 }
 body.crypt-dark .tab-content table tbody{}
@@ -1187,15 +1187,15 @@ body.crypt-dark .crypt-radio-boxed label{
 }
 
 .crypt-radio-boxed input[type=radio]:checked ~ .check {
-  border: 5px solid #49c279;
+  border: 5px solid #48c079;
 }
 
 .crypt-radio-boxed input[type=radio]:checked ~ .check::before{
-  background: #49c279;
+  background: #48c079;
 }
 
 .crypt-radio-boxed input[type=radio]:checked ~ label{
-  color: #49c279;
+  color: #48c079;
 }
 
 select.crypt-image-select{
@@ -1310,7 +1310,7 @@ body{
 .cryptorio-forms{}
 .cryptorio-forms-dark{}
 .cryptorio-forms-dark .cryptorio-main-form{
-    background: #131722 url('/assets/images/bg.png') center no-repeat;
+    background: #0f1b4c url('/assets/images/bg.png') center no-repeat;
     padding: 70px 60px 100px 60px;
     box-shadow: 0 0 53px #00000063;
     border-radius: 5px;

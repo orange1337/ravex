@@ -101,8 +101,22 @@ export class TvChartContainerComponent implements OnInit, OnDestroy {
             container_id: this._containerId,
             library_path: this._libraryPath,
             locale: getLanguageFromURL() || 'en',
-            disabled_features: ['use_localstorage_for_settings'],
-            enabled_features: ['study_templates'],
+            disabled_features: [
+                "use_localstorage_for_settings", 
+                "header_symbol_search", 
+                "symbol_search_hot_key", 
+                "left_toolbar",
+                "header_settings",
+                "header_compare",
+                "header_saveload",
+                "header_screenshot",
+                "header_compare",
+                "header_undo_redo",
+                "control_bar",
+                "display_market_status",
+                "create_volume_indicator_by_default",
+                "timeframes_toolbar"
+            ],
             charts_storage_url: this._chartsStorageUrl,
             charts_storage_api_version: this._chartsStorageApiVersion,
             client_id: this._clientId,
@@ -111,14 +125,16 @@ export class TvChartContainerComponent implements OnInit, OnDestroy {
             autosize: this._autosize,
             theme: this._theme,
             overrides: { "paneProperties.background": "#0f1b4c" },
-            toolbar_bg: "#0f1b4c"
+            toolbar_bg: "#0d0e42",
         };
 
-        const tvWidget = new widget(widgetOptions);
+        const tvWidget: any = new widget(widgetOptions);
         this._tvWidget = tvWidget;
 
-        /*tvWidget.onChartReady(() => {
-            const button = tvWidget.createButton()
+        tvWidget.onChartReady(() => {
+            console.log(tvWidget);
+            tvWidget.addCustomCSSFile('/assets/libs/tv-custom.css');
+            /*const button = tvWidget.createButton()
                 .attr('title', 'Click to show a notification popup')
                 .addClass('apply-common-tooltip')
                 .on('click', () => tvWidget.showNoticeDialog({
@@ -129,8 +145,8 @@ export class TvChartContainerComponent implements OnInit, OnDestroy {
                     },
                 }));
 
-            button[0].innerHTML = 'Check API';
-        });*/
+            button[0].innerHTML = 'Check API';*/
+        });
     }
 
     ngOnDestroy() {

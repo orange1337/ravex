@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MainService } from '../../../../services/main.service';
+import { ScatterService } from '../../../../services/scatter.service';
 
 @Component({
   selector: 'app-exchange',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ExchangeComponent implements OnInit {
 
-  constructor() { }
+  coinInfo;
+  constructor(public mainService: MainService, public scatterService: ScatterService) { }
 
   ngOnInit() {
+  		this.mainService.updateHeader.subscribe( (res: any) => {
+  				this.coinInfo = res;
+  				console.log(res);
+  		});
   }
 
 }

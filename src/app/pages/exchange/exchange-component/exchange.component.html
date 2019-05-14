@@ -1,20 +1,44 @@
-    <header>
+<header>
         <div class="container-full-width">
             <div class="crypt-header">
                 <div class="row">
-                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-5">
+                    <div class="col-xl-3 col-lg-4 col-md-4 col-sm-5">
                         <div class="row">
                             <div class="col-xs-2">
                                 <div class="crypt-logo"><a href="/trade"><img src="/assets/images/ravex.svg" alt=""></a></div>
                             </div>
                             <div class="col-xs-2">
                                 <div class="crypt-mega-dropdown-menu"> 
-                                    <a  class="crypt-mega-dropdown-toggle">EOS/PTS</a>
+                                    <a  class="crypt-mega-dropdown-toggle">
+                                        <img alt="" class="coin-img" src="https://prospectors.io/auction/img/sets/pb.png">
+                                        <div class="coin-header-name">
+                                            <div>{{mainService?.currency}}/{{coinInfo?.symbol}} <i class="far fa-chevron-down"></i></div>
+                                            <div class="token-author">{{coinInfo?.author}}</div>
+                                        </div>
+                                    </a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-8 col-lg-8 col-md-8 d-none d-md-block d-lg-block">
+                    <div class="col-sm-4 col-md-4 col-lg-4 header-coin-grid-container">
+                        <div class="header-coin-grid header-coin-info">
+                            <p class="header-price">{{coinInfo?.price}} {{mainService?.currency}}</p>
+                            <p [ngClass]="{'crypt-up' : coinInfo?.change > 0, 'crypt-down' : coinInfo?.change < 0}">{{coinInfo?.change}}%</p>
+                        </div>
+                        <div class="header-coin-grid header-coin-info">
+                            <p class="header-coin-info-title">24h Lowest</p>
+                            <p class="crypt-down">{{coinInfo?.min}} {{mainService?.currency}}</p>
+                        </div>
+                        <div class="header-coin-grid header-coin-info">
+                            <p class="header-coin-info-title">24h Highest</p>
+                            <p class="crypt-up">{{coinInfo?.max}} {{mainService?.currency}}</p>
+                        </div>
+                        <div class="header-coin-grid header-coin-info">
+                            <p class="header-coin-info-title">24h Vol.</p>
+                            <p>{{coinInfo?.vol}} {{coinInfo?.symbol}}</p>
+                        </div>
+                    </div>
+                    <div class="col-xl-5ноу  col-lg-5 col-md-5 d-none d-md-block d-lg-block">
                         <ul class="crypt-heading-menu fright">
                             <li><a routerLink="/trade/sa" class="crypt-active">Simple Assets</a></li>
                             <li><a routerLink="/trade">EOS tokens</a></li>
@@ -26,20 +50,8 @@
                     </div><i class="menu-toggle pe-7s-menu d-xs-block d-sm-block d-md-none d-sm-none"></i></div>
             </div>
         </div>
-        <div class="crypt-mobile-menu">
-            <ul class="crypt-heading-menu">
-                <li class="active"><a href="">Exchange</a></li>
-                <li><a href="">Market Cap</a></li>
-                <li><a href="">Treanding</a></li>
-                <li><a href="">Tools</a></li>
-                <li class="crypt-box-menu menu-red"><a href="">register</a></li>
-                <li class="crypt-box-menu menu-green"><a href="">login</a></li>
-            </ul>
-            <div class="crypt-gross-market-cap">
-                <h5>$34.795.90 <span class="crypt-up pl-2">+3.435 %</span></h5>
-                <h6>0.7925.90 BTC <span class="crypt-down pl-2">+7.435 %</span></h6></div>
-        </div>
 </header>
 
+<ngx-toasta></ngx-toasta>
 <router-outlet></router-outlet>
 

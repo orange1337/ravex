@@ -19,6 +19,7 @@ export class SimpleassetComponent implements OnInit, AfterViewChecked {
   coinsList = {};
   author = 'prospectorsa';
   symbol = 'PTS';
+  ftid = '100000000000048';
   priceNull = '0.0000';
 
   getCoinsTable(){
@@ -26,6 +27,12 @@ export class SimpleassetComponent implements OnInit, AfterViewChecked {
   						.subscribe((res: any) => {
   							this.dataSource = res.coins; 
                 this.coinsList = this.mainService.generetCoinsArr(res);
+                let data = {
+                    ...this.coinsList[this.ftid], 
+                    symbol: this.symbol,
+                    author: this.author
+                };
+                this.mainService.updateHeader.emit(data);
   						}, err => {	
   							console.error(err);
   						})

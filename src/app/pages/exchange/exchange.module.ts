@@ -13,6 +13,8 @@ import { MatTabsModule,
 } from '@angular/material';
 
 import { MainService } from '../../../services/main.service';
+import { ScatterService } from '../../../services/scatter.service';
+import { ToastaModule } from 'ngx-toasta';
 
 @NgModule({
   declarations: [ExchangeComponent, SimpleassetComponent, EostradeComponent, TvChartContainerComponent],
@@ -20,8 +22,9 @@ import { MainService } from '../../../services/main.service';
     CommonModule,
     ExchangeRoutingModule,
     MatTabsModule,
-    MatTableModule
+    MatTableModule,
+    ToastaModule.forRoot()
   ],
-  providers: [MainService]
+  providers: [MainService, ScatterService]
 })
 export class ExchangeModule { }

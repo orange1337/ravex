@@ -4,6 +4,8 @@ import { HttpClient } from '@angular/common/http';
 @Injectable()
 export class MainService {
 
+    public currency = 'EOS';
+    public updateHeader = new EventEmitter<any>();
 
     constructor(private http: HttpClient){}
 
@@ -25,6 +27,8 @@ export class MainService {
       });
       data.vol.forEach((elem: any) => {
             result[elem._id.ftid].vol = elem.volume.toFixed(4); 
+            result[elem._id.ftid].min = elem.priceMin.toFixed(4);
+            result[elem._id.ftid].max = elem.priceMax.toFixed(4);
             result[elem._id.ftid].change = ((elem.priceMax - elem.priceMin) / elem.priceMax * 100).toFixed(2); 
       });
       return result;

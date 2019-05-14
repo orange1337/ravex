@@ -118,6 +118,9 @@ body {
 .text-center{
     text-align: center;
 }
+.no-padding-left{
+    padding-left: 0 !important;
+}
 .mat-header-row, .mat-row{
     height: 30px !important;
 }
@@ -171,6 +174,50 @@ body {
     background: #0e1a4c;
     overflow-y: scroll; 
 }
+.crypt-dark p{
+    margin-bottom: 0;
+}
+.header-coin-info{
+    padding-top: 15px
+}
+.header-price{
+    font-size: 16px;
+}
+.header-coin-info-title{
+    font-size: 12px;
+    color: #7384B8 !important;
+    margin-top: 2px;
+}
+.header-coin-grid-container{
+    display: flex;
+    padding-left: 0;
+}
+.header-coin-grid{
+    margin-left: 25px;
+}
+.header-coin-grid:first-child{
+    margin-left: 0;
+}
+.coin-img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #fff;
+    margin-right: 10px;
+    float: left;
+}
+.coin-header-name{
+    display: table;
+    margin-top: 2px;
+}
+.token-author{
+    font-size: 12px;
+    color: #7384B8;
+    font-weight: lighter;
+}
+
+
+
 
 
 

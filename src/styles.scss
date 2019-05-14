@@ -160,7 +160,7 @@ body {
 
 .app-tv-chart-container{
     min-height: 359px;
-    height: 40vh;
+    height: 48vh;
 }
 .main-green{
     color: #48c079 !important;
@@ -169,10 +169,22 @@ body {
     color: #f86050 !important;
 }
 .grid-table{
-    height: calc(40vh - 39px);
+    height: calc(48vh - 39px);
     min-height: 320px;
     background: #0e1a4c;
     overflow-y: scroll; 
+}
+.grid-table-bottom{
+    height: 38vh;
+    min-height: 290px;
+    background: #0e1a4c;
+    overflow-y: scroll;
+}
+.grid-table-bottom-left{
+    height: calc(37vh - 39px);
+    min-height: 257px;
+    background: #0e1a4c;
+    overflow-y: scroll;
 }
 .crypt-dark p{
     margin-bottom: 0;
@@ -215,11 +227,29 @@ body {
     color: #7384B8;
     font-weight: lighter;
 }
-
-
-
-
-
+.bottom-container{
+    margin-top: 14px;
+}
+.input-group-text{
+    border: none;
+}
+.form-control{
+    height: 2rem;
+    font-size: 0.8rem;
+}
+.contrast-color{
+    color: #7384B8 !important;
+}
+.order-book-price{
+    background: #0c184c;
+    padding: 11px 0;
+    text-align: center;
+    font-weight: bold;
+    font-size: 15px;
+}
+.no-shadow{
+    box-shadow: none !important;
+}
 
 
 

@@ -14,8 +14,10 @@ export class SimpleassetComponent implements OnInit, AfterViewChecked {
 
   displayedColumns = ['symbol', 'price', 'change', 'volume'];
   displayedColumnsSells = ['price', 'qty', 'total'];
+  displayedColumnsBalances = ['symbol', 'amount', 'value'];
   dataSource;
   dataSourceSells;
+  dataSourceBalances;
   coinsList = {};
   author = 'prospectorsa';
   symbol = 'PTS';

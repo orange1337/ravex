@@ -39,7 +39,7 @@ iframe body{
     color: #fff;
 }
 .crypt-dark .input-group select{
-    background: #131a33;
+    background: #0d194c;
     border: 1px solid #2f3a56;
 }
 .crypt-dark h1,
@@ -56,22 +56,22 @@ iframe body{
     background: #0f1b4c;
 }
 .crypt-deepblue-segment{
-    background: #131a33;
+    background: #0d194c;
 }
 body.crypt-dark .input-group-text{
-
     color: #e9ecef;
     text-align: center;
     white-space: nowrap;
-    background-color: #0e162d;
-    border: 1px solid #2f3a56;
+    background-color: #101c50;
+    border-left: 2px solid #1d2755;
     border-radius: 0;
+    font-size: 13px;
 }
 body.crypt-dark .form-control {
     color: #ffffff;
-    background-color: #0e162d;
+    background-color: #111d50;
     background-clip: padding-box;
-    border: 1px solid #2f3a56;
+    border: none;
     border-radius: 0.25rem;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
@@ -189,11 +189,13 @@ body.crypt-dark .crypt-btn:hover{
     background: #fff;
 }
 body.crypt-dark .crypt-bg-head{
-    background: #1f2638;
-    padding: 13px;
+    background: #0c0d42;
+    padding: 12px 15px;
+    font-size: 13px;
+    margin-bottom: 0;
 }
 body.crypt-dark .crypt-boxed-area{
-    background: #131a33;
+    background: #0d194c;
     border: none;
     color: #fff;
 }
@@ -208,14 +210,13 @@ body.crypt-dark .crypt-boxed-area{
     padding-left: 30px;
 }
 .crypt-button-green-full{
-    background: #48c079;
     color: #fff;
-    padding: 9px;
+    padding: 5px;
     text-align: center;
     text-decoration: none;
     display: block;
     width: 100%;
-    font-size: 20px;
+    font-size: 14px;
     transition: all 0.4s ease;
 }
 .crypt-button-green-full:hover{
@@ -224,15 +225,14 @@ body.crypt-dark .crypt-boxed-area{
     color: #fff;
 }
 .crypt-button-red-full{
-    background: #f7614e !important;
     border: none !important;
     color: #fff;
-    padding: 9px;
+    padding: 5px;
     text-align: center;
     text-decoration: none;
     display: block;
     width: 100%;
-    font-size: 20px;
+    font-size: 14px;
     transition: all 0.4s ease;
 }
 .crypt-button-red-full:hover{
@@ -519,6 +519,7 @@ body.crypt-dark .crypt-boxed-area{
 
 .menu-red{
     background: #f7614e;
+    border-radius: 5px;
 }
 .menu-red a{
     color: #fff !important;
@@ -529,6 +530,7 @@ body.crypt-dark .crypt-boxed-area{
 }
 .menu-green{
     background: #48c079;
+    border-radius: 5px;
 }
 .menu-green a{
     color: #fff !important;
@@ -610,7 +612,7 @@ body.crypt-dark .crypt-boxed-area{
     padding-top: 115px;
 }
 body.crypt-dark .crypt-side-menu{
-    background: #131a33 !important;
+    background: #0d194c !important;
 }
 .crypt-left-sided{} 
 
@@ -736,7 +738,7 @@ body.crypt-dark .tab-content table tr:hover{
     cursor: pointer;
 }
 body.crypt-dark .tab-content table tr:nth-of-type(odd){
-    background: #131a33;
+    background: #0d194c;
     color: #fff;
 }
 body.crypt-dark .tab-content table tr:nth-of-type(even){
@@ -757,7 +759,7 @@ body.crypt-dark table th{
     border: none !important;
 }
 body.crypt-dark .no-orders{
-    background: #131a33;
+    background: #0d194c;
 }
 /*------------ Table dark ends -------*/
 
@@ -776,7 +778,8 @@ body.crypt-dark .no-orders{
 --------- buy sell form ----------
 --------------------------------------*/
 .crypt-buy-sell-form > p{
-    padding: 20px;
+    padding: 7px 20px;
+    font-size: 12px;
     margin-bottom: 0;
 }
 .crypt-buy{
@@ -1063,7 +1066,7 @@ body.crypt-dark .crypt-big-list li a:focus{
     margin-top: 10px;
 }
 body.crypt-dark .crypt-withdraw-body{
-    background: #131a33 !important;
+    background: #0d194c !important;
 }
 .crypt-withdraw-body .nav-pills{
     padding: 30px 7px;
@@ -1213,7 +1216,7 @@ body.crypt-dark select.crypt-image-select{
     border: 1px solid #2f3a56;
     outline: none;
     color:#ddd;
-    background: #131a33;
+    background: #0d194c;
 }
 select.crypt-image-select option{}
 .input-text-select{}

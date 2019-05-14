@@ -22,20 +22,20 @@
                     </div>
                     <div class="col-sm-4 col-md-4 col-lg-4 header-coin-grid-container">
                         <div class="header-coin-grid header-coin-info">
-                            <p class="header-price">{{coinInfo?.price}} {{mainService?.currency}}</p>
-                            <p [ngClass]="{'crypt-up' : coinInfo?.change > 0, 'crypt-down' : coinInfo?.change < 0}">{{coinInfo?.change}}%</p>
+                            <p class="header-price">{{coinInfo?.price || '0.0000'}} {{mainService?.currency}}</p>
+                            <p [ngClass]="{'crypt-up' : coinInfo?.change > 0, 'crypt-down' : coinInfo?.change < 0}">{{coinInfo?.change || '0.0000'}}%</p>
                         </div>
                         <div class="header-coin-grid header-coin-info">
                             <p class="header-coin-info-title">24h Lowest</p>
-                            <p class="crypt-down">{{coinInfo?.min}} {{mainService?.currency}}</p>
+                            <p class="crypt-down">{{coinInfo?.min || '0.0000'}} {{mainService?.currency}}</p>
                         </div>
                         <div class="header-coin-grid header-coin-info">
                             <p class="header-coin-info-title">24h Highest</p>
-                            <p class="crypt-up">{{coinInfo?.max}} {{mainService?.currency}}</p>
+                            <p class="crypt-up">{{coinInfo?.max || '0.0000'}} {{mainService?.currency}}</p>
                         </div>
                         <div class="header-coin-grid header-coin-info">
                             <p class="header-coin-info-title">24h Vol.</p>
-                            <p>{{coinInfo?.vol}} {{coinInfo?.symbol}}</p>
+                            <p>{{coinInfo?.vol || '0.0000'}} {{coinInfo?.symbol}}</p>
                         </div>
                     </div>
                     <div class="col-xl-5ноу  col-lg-5 col-md-5 d-none d-md-block d-lg-block">

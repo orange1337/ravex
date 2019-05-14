@@ -19,9 +19,13 @@ export class MainService {
       if (!data) {
          return;
       }
-      let result = [];
-      data.forEach(elem => {
-            result.push(this.generateProductStructureFt(elem));
+      let result = {};
+      data.price.forEach((elem: any) => {
+            result[elem._id.ftid] = { price: elem.price.toFixed(4) }; 
+      });
+      data.vol.forEach((elem: any) => {
+            result[elem._id.ftid].vol = elem.volume.toFixed(4); 
+            result[elem._id.ftid].change = ((elem.priceMax - elem.priceMin) / elem.priceMax * 100).toFixed(2); 
       });
       return result;
    }

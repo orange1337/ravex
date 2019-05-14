@@ -45,36 +45,51 @@ module.exports = function(router, config, request, log, mongoMain, eos, wrapper)
 	router.get('/api/v1/ft/popular', async (req, res) => {
 		let skip = 0;
 		let limit = 6;
-		let query = [
+		let last24H = new Date(+new Date() - 86400000);
+		let queryActiveCoins = [
 			{ $match: { active: true } },
 			{ 
 			  $group: { 
-				_id: "$ftid",
-				market: { $sum: "$qtyNum" }
+				_id: { ftid: "$ftid", symbol: "$symbol" },
+				qty: { $sum: "$qtyNum" }
 			  } 
 			},
-			{ $sort: { market: -1 } },
-			{ $limit: limit },
-			{
-      			$lookup: {
-      			   from: "FT_ASSETS",
-   				   localField: "_id",
-   				   foreignField: "ftid",
-      			   as: "orderData"
-      			}
-			},
-			{
-   			   $replaceRoot: { newRoot: { $mergeObjects: [ { $arrayElemAt: [ "$orderData", 0 ] }, "$$ROOT" ] } }
-   			},
-   			{ $project: { orderData: 0 } }
+			{ $sort: { qty: -1 } }
 		];
+		let queryPrice = [
+			{ $match: { status: "CLOSED" } },
+			{ $sort: { time: 1 } },
+			{ 
+			  $group: { 
+				_id: { ftid: "$ftid", symbol: "$symbol" },
+				price: { $last: "$priceNum" }
+			  } 
+			}
+		];
+		let query24H = [
+			{ $match: { status: "CLOSED", time: { $gte: last24H } } },
+			{ $sort: { time: 1 } },
+			{ 
+			  $group: { 
+				_id: { ftid: "$ftid", symbol: "$symbol" },
+				priceMin: { $min: "$priceNum" },
+				priceMax: { $max: "$priceNum" },
+				volume: { $sum: "$qtyNum" }
+			  } 
+			}
+		];
+		let pq_1 = wrapper.to(SELLS_FT_DB.aggregate(queryActiveCoins));
+		let pq_2 = wrapper.to(SELLS_FT_DB.aggregate(queryPrice));
+		let pq_3 = wrapper.to(SELLS_FT_DB.aggregate(query24H));
 
-		let [err, items] = await wrapper.to(SELLS_FT_DB.aggregate(query));
-		if (err){
-			log.error(err);
+		let [err1, coins] = await pq_1; 
+		let [err2, price] = await pq_2; 
+		let [err3, vol] = await pq_3; 
+		if (err1 || err2 || err3){
+			log.error(err1 || err2 || err3);
 			return res.status(500).end();
 		}
-		res.json(items);
+		res.json({ coins, price, vol });
 	});
 
 	router.get('/api/v1/ft/market', async (req, res) => {

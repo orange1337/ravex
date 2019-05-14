@@ -14,13 +14,16 @@ export class SimpleassetComponent implements OnInit {
   displayedColumnsSells = ['price', 'qty', 'total'];
   dataSource;
   dataSourceSells;
+  coinsList = {};
   author = 'prospectorsa';
   symbol = 'PTS';
+  priceNull = '0.0000';
 
   getCoinsTable(){
   		this.mainService.getSAcoins()
-  						.subscribe(res => {
-  							this.dataSource = this.mainService.generetCoinsArr(res);
+  						.subscribe((res: any) => {
+  							this.dataSource = res.coins; 
+                this.coinsList = this.mainService.generetCoinsArr(res);
   						}, err => {	
   							console.error(err);
   						})

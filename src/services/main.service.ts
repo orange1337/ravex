@@ -8,7 +8,7 @@ export class MainService {
     constructor(private http: HttpClient){}
 
     getSAcoins(){
-        return this.http.get('/api/v1/ft/popular');
+        return this.http.get('/api/v1/ft/coins');
     }
     
     getSAsells(author, symbol){

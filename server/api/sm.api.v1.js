@@ -42,7 +42,7 @@ module.exports = function(router, config, request, log, mongoMain, eos, wrapper)
 	    ]);
 	}
 	
-	router.get('/api/v1/ft/popular', async (req, res) => {
+	router.get('/api/v1/ft/coins', async (req, res) => {
 		let skip = 0;
 		let limit = 6;
 		let last24H = new Date(+new Date() - 86400000);

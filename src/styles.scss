@@ -154,8 +154,10 @@ body {
 .left-container{
     padding-right: 20px !important;
 }
+
 .app-tv-chart-container{
-    height: 359px;
+    min-height: 359px;
+    height: 40vh;
 }
 .main-green{
     color: #48c079 !important;
@@ -163,7 +165,12 @@ body {
 .main-red{
     color: #f86050 !important;
 }
-
+.grid-table{
+    height: calc(40vh - 39px);
+    min-height: 320px;
+    background: #0e1a4c;
+    overflow-y: scroll; 
+}
 
 
 

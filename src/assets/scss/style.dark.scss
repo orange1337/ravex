@@ -218,9 +218,9 @@ body.crypt-dark .crypt-boxed-area{
     width: 100%;
     font-size: 14px;
     transition: all 0.4s ease;
+    cursor: pointer;
 }
 .crypt-button-green-full:hover{
-    background: #34a560;
     text-decoration: none;
     color: #fff;
 }
@@ -234,11 +234,11 @@ body.crypt-dark .crypt-boxed-area{
     width: 100%;
     font-size: 14px;
     transition: all 0.4s ease;
+    cursor: pointer;
 }
 .crypt-button-red-full:hover{
     text-decoration: none;
     color: #fff;
-    background: #ca3a28;
 }
 .crypt-header{
     box-shadow: 0 2px 20px #f1f1f1;
@@ -706,7 +706,7 @@ body.crypt-dark ul.nav-tabs li{
     padding: 0 10px;
 }
 body.crypt-dark ul.nav-tabs li a{
-    color: #fff;
+    color: #7384b8;
     font-weight: 600;
     text-transform: uppercase;
     text-decoration: none;
@@ -716,6 +716,7 @@ body.crypt-dark ul.nav-tabs li a{
 body.crypt-dark ul.nav-tabs li{}
 body.crypt-dark ul.nav-tabs li a.active{
     border-bottom: 2px solid #1c2775;
+    color: #fff;
 }
 body.crypt-dark .tab-content table{
     margin-bottom: 0;

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MainService } from '../../../../services/main.service';
-import { ScatterService } from '../../../../services/scatter.service';
+import { MainService } from '../../../services/main.service';
+import { ScatterService } from '../../../services/scatter.service';
 
 @Component({
   selector: 'app-exchange',

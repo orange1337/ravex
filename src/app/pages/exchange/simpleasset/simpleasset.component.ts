@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewChecked, ElementRef, ViewChild } from '@angular/core';
-import { MainService } from '../../../../services/main.service';
+import { MainService } from '../../../services/main.service';
 
 @Component({
   selector: 'app-simpleasset',

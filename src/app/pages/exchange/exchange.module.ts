@@ -9,11 +9,12 @@ import { EostradeComponent } from './eostrade/eostrade.component';
 import { TvChartContainerComponent } from '../../components/tvchart/tvchart.component';
 
 import { MatTabsModule,
-		 MatTableModule 
+		 MatTableModule,
+     MatButtonToggleModule
 } from '@angular/material';
 
-import { MainService } from '../../../services/main.service';
-import { ScatterService } from '../../../services/scatter.service';
+import { MainService } from '../../services/main.service';
+import { ScatterService } from '../../services/scatter.service';
 import { ToastaModule } from 'ngx-toasta';
 
 @NgModule({
@@ -23,6 +24,7 @@ import { ToastaModule } from 'ngx-toasta';
     ExchangeRoutingModule,
     MatTabsModule,
     MatTableModule,
+    MatButtonToggleModule,
     ToastaModule.forRoot()
   ],
   providers: [MainService, ScatterService]

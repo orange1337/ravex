@@ -97,9 +97,25 @@
                                         <input type="number" class="form-control">
                                         <div class="input-group-append"> <span class="input-group-text">{{mainService?.currency}}</span> </div>
                                     </div>
-                                    <div>
+                                    <div class="mb-2">
+                                        <mat-button-toggle-group #group="matButtonToggleGroup">
+                                          <mat-button-toggle value="25">
+                                            <span>25 %</span>
+                                          </mat-button-toggle>
+                                          <mat-button-toggle value="50">
+                                            <span>50 %</span>
+                                          </mat-button-toggle>
+                                          <mat-button-toggle value="75">
+                                            <span>75 %</span>
+                                          </mat-button-toggle>
+                                          <mat-button-toggle value="100">
+                                            <span>100 %</span>
+                                          </mat-button-toggle>
+                                        </mat-button-toggle-group>
+                                    </div>
+                                    <div class="mb-2">
                                         <p class="contrast-color">Fee: <span class="fright">0.1% = 0.02 {{mainService?.currency}}</span></p>
-                                        <p class="contrast-color mb-2">You will pay: <span class="fright">0.09834 {{mainService?.currency}}</span></p>
+                                        <p class="contrast-color">You will pay: <span class="fright">0.09834 {{mainService?.currency}}</span></p>
                                     </div>
                                     <div class="menu-green"><a class="crypt-button-green-full">Buy</a></div>
                                 </div>
@@ -117,9 +133,25 @@
                                         <input type="number" class="form-control">
                                         <div class="input-group-append"> <span class="input-group-text">{{symbol}}</span> </div>
                                     </div>
-                                    <div>
+                                    <div class="mb-2">
+                                        <mat-button-toggle-group #group="matButtonToggleGroup">
+                                          <mat-button-toggle value="25">
+                                            <span>25 %</span>
+                                          </mat-button-toggle>
+                                          <mat-button-toggle value="50">
+                                            <span>50 %</span>
+                                          </mat-button-toggle>
+                                          <mat-button-toggle value="75">
+                                            <span>75 %</span>
+                                          </mat-button-toggle>
+                                          <mat-button-toggle value="100">
+                                            <span>100 %</span>
+                                          </mat-button-toggle>
+                                        </mat-button-toggle-group>
+                                    </div>
+                                    <div class="mb-2">
                                         <p class="contrast-color">Fee: <span class="fright">0.1% = 0.02 {{mainService?.currency}}</span></p>
-                                        <p class="contrast-color mb-2">You will get: <span class="fright">0.09834 {{mainService?.currency}}</span></p>
+                                        <p class="contrast-color">You will get: <span class="fright">0.09834 {{mainService?.currency}}</span></p>
                                     </div>
                                     <div class="menu-red"><a class="crypt-button-red-full">Sell</a></div>
                                 </div>

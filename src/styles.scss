@@ -266,8 +266,21 @@ a{
     margin: 20px;
     background: #111d50;
 }
-
-
+.mat-button-toggle-appearance-standard{
+    background: #0c184c !important;
+    outline: none;
+}
+.mat-button-toggle-appearance-standard .mat-button-toggle-label-content{
+    line-height: 26px !important;
+    padding: 0 22px !important;
+}
+.mat-button-toggle-group-appearance-standard .mat-button-toggle + .mat-button-toggle,
+.mat-button-toggle-standalone.mat-button-toggle-appearance-standard, .mat-button-toggle-group-appearance-standard{
+    border-color: rgb(28, 38, 85) !important;
+}
+.mat-button-toggle-appearance-standard .mat-button-toggle-label-content{
+    color: #7384B8 !important;
+}
 
 
 

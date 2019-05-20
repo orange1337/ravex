@@ -128,7 +128,7 @@ a{
     height: 30px !important;
 }
 .mat-header-row{
-    border-bottom: 1px solid #151f5a;
+    border-bottom: 1px solid #202e51;
 }
 .mat-header-cell{
     color: #27d8db;
@@ -138,16 +138,19 @@ a{
 }
 .mat-table{
     width: 100%;
-    background: #0f1b4c;
+    background: #192648;
+}
+.mat-elevation-z8{
+    box-shadow: none !important;
 }
 .mat-row:nth-child(even){
-    background-color: #0f1749;
+    background-color: #172442;
 }
 .mat-row:nth-child(odd){
-    background-color: #111d50;
+    background-color: #16203f;
 }
 .mat-row:hover {
-    background-color: #14225e;
+    background-color: #212d52;
     cursor: pointer;
 }
 .coin-image{
@@ -177,19 +180,19 @@ a{
 .grid-table{
     height: calc(48vh - 39px);
     min-height: 320px;
-    background: #0e1a4c;
+    background: #1a2748;
     overflow-y: scroll; 
 }
 .grid-table-bottom{
     height: 38vh;
     min-height: 290px;
-    background: #0e1a4c;
+    background: #1a2748;
     overflow-y: scroll;
 }
 .grid-table-bottom-left{
     height: calc(37vh - 39px);
     min-height: 257px;
-    background: #0e1a4c;
+    background: #1a2748;
     overflow-y: scroll;
 }
 .crypt-dark p{
@@ -203,7 +206,7 @@ a{
 }
 .header-coin-info-title{
     font-size: 12px;
-    color: #7384B8 !important;
+    color: #455a89 !important;
     margin-top: 2px;
 }
 .header-coin-grid-container{
@@ -230,7 +233,7 @@ a{
 }
 .token-author{
     font-size: 12px;
-    color: #7384B8;
+    color: #455a89;
     font-weight: lighter;
 }
 .bottom-container{
@@ -246,10 +249,10 @@ a{
     font-size: 0.8rem;
 }
 .contrast-color{
-    color: #7384B8 !important;
+    color: #455a89 !important;
 }
 .order-book-price{
-    background: #0c184c;
+    background: #16203f;
     padding: 11px 0;
     text-align: center;
     font-weight: bold;
@@ -260,14 +263,14 @@ a{
 }
 .empty-container{
     text-align: center;
-    color: #36446e;
+    color: #455a89;
     font-weight: bold;
     padding: 10px;
     margin: 20px;
-    background: #111d50;
+    background: #16203f94;
 }
 .mat-button-toggle-appearance-standard{
-    background: #0c184c !important;
+    background: #16203f !important;
     outline: none;
 }
 .mat-button-toggle-appearance-standard .mat-button-toggle-label-content{
@@ -279,10 +282,26 @@ a{
     border-color: rgb(28, 38, 85) !important;
 }
 .mat-button-toggle-appearance-standard .mat-button-toggle-label-content{
-    color: #7384B8 !important;
+    color: #455a89 !important;
 }
-
-
+footer{
+    display: inline-flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: auto;
+    padding: 30px;
+    box-sizing: border-box;
+    background: #17213f;
+    color: #455a89;
+    margin-top: 20px;
+}
+footer a{
+    margin-left: 15px;
+}
+footer a:hover{
+    color: #27d8db !important;
+    cursor: pointer;
+}
 
 
 

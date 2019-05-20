@@ -124,8 +124,8 @@ export class TvChartContainerComponent implements OnInit, OnDestroy {
             fullscreen: this._fullscreen,
             autosize: this._autosize,
             theme: this._theme,
-            overrides: { "paneProperties.background": "#0f1b4c" },
-            toolbar_bg: "#0d0e42",
+            overrides: { "paneProperties.background": "#1a2748" },
+            toolbar_bg: "#17213f",
         };
 
         const tvWidget: any = new widget(widgetOptions);

@@ -33,13 +33,13 @@ iframe body{
 }
 /*------------- dark theme -------------*/
 .crypt-dark{
-    background: #090e29;
+    background: #111a35;
 }
 .crypt-dark .icon-big{
     color: #fff;
 }
 .crypt-dark .input-group select{
-    background: #0d194c;
+    background: #192648;
     border: 1px solid #2f3a56;
 }
 .crypt-dark h1,
@@ -56,20 +56,20 @@ iframe body{
     background: #0f1b4c;
 }
 .crypt-deepblue-segment{
-    background: #0d194c;
+    background: #192648;
 }
 body.crypt-dark .input-group-text{
     color: #e9ecef;
     text-align: center;
     white-space: nowrap;
-    background-color: #101c50;
-    border-left: 2px solid #1d2755;
+    background-color: #141e3f;
+    border-left: 2px solid #202e51;
     border-radius: 0;
     font-size: 13px;
 }
 body.crypt-dark .form-control {
     color: #ffffff;
-    background-color: #111d50;
+    background-color: #141e3f;
     background-clip: padding-box;
     border: none;
     border-radius: 0.25rem;
@@ -83,12 +83,12 @@ g[opacity="0.4"]{
     display: none;
 }
 .crypt-logo{
-    padding: 26px;
-    background: #0c0e42; //linear-gradient(to left, #0e162d9e, #1f2843);
+    padding: 27px;
+    background: #17223f; //linear-gradient(to left, #0e162d9e, #1f2843);
     margin-left: 15px;
 }
 .crypt-logo img{
-    width: 100px !important;
+    width: 85px !important;
 }
 /*--- colors ----*/
 .crypt-yellow{
@@ -189,13 +189,13 @@ body.crypt-dark .crypt-btn:hover{
     background: #fff;
 }
 body.crypt-dark .crypt-bg-head{
-    background: #0c0d42;
+    background: #151f3f;
     padding: 12px 15px;
     font-size: 13px;
     margin-bottom: 0;
 }
 body.crypt-dark .crypt-boxed-area{
-    background: #0d194c;
+    background: #192648;
     border: none;
     color: #fff;
 }
@@ -370,7 +370,7 @@ body.crypt-dark .crypt-boxed-area{
 }
 .crypt-dark .crypt-header{
     box-shadow: none;
-    background: #0e1846;
+    background: #1a2748;
     position: fixed;
     top: 0;
     left: 0;
@@ -391,7 +391,7 @@ body.crypt-dark .crypt-boxed-area{
     text-decoration: none;
     outline: none;
     font-size: 15px;
-    border-right: 1px solid #1d2855;
+    border-right: 1px solid #2f4068;
 }
 .crypt-dark .crypt-mega-dropdown-menu a.crypt-mega-dropdown-toggle i{
     font-weight: 600;
@@ -431,7 +431,7 @@ body.crypt-dark .crypt-boxed-area{
 
 .crypt-dark .crypt-gross-market-cap {
     padding: 25px;
-    background: #0c0d42;
+    background: #151f3f;
 }
 .crypt-dark .crypt-gross-market-cap p:first-child{
     margin-bottom: 5px;
@@ -479,7 +479,7 @@ body.crypt-dark .crypt-boxed-area{
 .crypt-dark .crypt-heading-menu li.active{
 }
 .crypt-dark .crypt-heading-menu li a{
-    color: #394670;
+    color: #455a89;
     text-decoration: none;
     transition: all 0.4s ease;
     padding: 12px 0px 23px 0px;
@@ -512,7 +512,7 @@ body.crypt-dark .crypt-boxed-area{
     border: 1px solid #27d8db;
 }
 .crypt-dark .hr-right{
-    border-right: 1px solid #1d2755;
+    border-right: 1px solid #2f4068;
     margin-right: 15px;
     padding: 12px 0px;
 }
@@ -612,7 +612,7 @@ body.crypt-dark .crypt-boxed-area{
     padding-top: 115px;
 }
 body.crypt-dark .crypt-side-menu{
-    background: #0d194c !important;
+    background: #192648 !important;
 }
 .crypt-left-sided{} 
 
@@ -700,13 +700,13 @@ body.crypt-dark .crypt-market-status{
 body.crypt-dark ul.nav-tabs{
     padding: 10px 0px;
     border: none;
-    background: #0d0e42;
+    background: #17213f;
 }
 body.crypt-dark ul.nav-tabs li{
     padding: 0 10px;
 }
 body.crypt-dark ul.nav-tabs li a{
-    color: #7384b8;
+    color: #455a89;
     font-weight: 600;
     text-transform: uppercase;
     text-decoration: none;
@@ -715,7 +715,7 @@ body.crypt-dark ul.nav-tabs li a{
 }
 body.crypt-dark ul.nav-tabs li{}
 body.crypt-dark ul.nav-tabs li a.active{
-    border-bottom: 2px solid #1c2775;
+    border-bottom: 2px solid #425785;
     color: #fff;
 }
 body.crypt-dark .tab-content table{
@@ -739,7 +739,7 @@ body.crypt-dark .tab-content table tr:hover{
     cursor: pointer;
 }
 body.crypt-dark .tab-content table tr:nth-of-type(odd){
-    background: #0d194c;
+    background: #192648;
     color: #fff;
 }
 body.crypt-dark .tab-content table tr:nth-of-type(even){
@@ -760,7 +760,7 @@ body.crypt-dark table th{
     border: none !important;
 }
 body.crypt-dark .no-orders{
-    background: #0d194c;
+    background: #192648;
 }
 /*------------ Table dark ends -------*/
 
@@ -1067,7 +1067,7 @@ body.crypt-dark .crypt-big-list li a:focus{
     margin-top: 10px;
 }
 body.crypt-dark .crypt-withdraw-body{
-    background: #0d194c !important;
+    background: #192648 !important;
 }
 .crypt-withdraw-body .nav-pills{
     padding: 30px 7px;
@@ -1217,7 +1217,7 @@ body.crypt-dark select.crypt-image-select{
     border: 1px solid #2f3a56;
     outline: none;
     color:#ddd;
-    background: #0d194c;
+    background: #192648;
 }
 select.crypt-image-select option{}
 .input-text-select{}

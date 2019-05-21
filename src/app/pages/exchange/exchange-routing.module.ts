@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { ExchangeComponent } from './exchange-component/exchange.component';
+import { ExchangeComponent } from './awrapper/exchange.component';
 import { SimpleassetComponent } from './simpleasset/simpleasset.component';
 import { EostradeComponent } from './eostrade/eostrade.component';
 

@@ -6,6 +6,10 @@ export class MainService {
 
     public currency = 'EOS';
     public updateHeader = new EventEmitter<any>();
+    public priceNull = '0.0000';
+    public symbol = 'PTS';
+    public author = 'prospectorsa';
+    public ftid = '100000000000048';
 
     constructor(private http: HttpClient){}
 

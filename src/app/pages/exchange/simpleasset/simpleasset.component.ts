@@ -19,10 +19,6 @@ export class SimpleassetComponent implements OnInit, AfterViewChecked {
   dataSourceSells;
   dataSourceBalances;
   coinsList = {};
-  author = 'prospectorsa';
-  symbol = 'PTS';
-  ftid = '100000000000048';
-  priceNull = '0.0000';
 
   getCoinsTable(){
   		this.mainService.getSAcoins()
@@ -30,9 +26,9 @@ export class SimpleassetComponent implements OnInit, AfterViewChecked {
   							this.dataSource = res.coins; 
                 this.coinsList = this.mainService.generetCoinsArr(res);
                 let data = {
-                    ...this.coinsList[this.ftid], 
-                    symbol: this.symbol,
-                    author: this.author
+                    ...this.coinsList[this.mainService.ftid], 
+                    symbol: this.mainService.symbol,
+                    author: this.mainService.author
                 };
                 this.mainService.updateHeader.emit(data);
   						}, err => {	
@@ -41,7 +37,7 @@ export class SimpleassetComponent implements OnInit, AfterViewChecked {
   }
 
   getOrderSells(){
-  		this.mainService.getSAsells(this.author, this.symbol)
+  		this.mainService.getSAsells(this.mainService.author, this.mainService.symbol)
   						.subscribe((res: any) => {
   							this.dataSourceSells = res.orders;
   						}, err => {	

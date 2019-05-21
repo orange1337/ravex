@@ -1,0 +1,77 @@
+<div class="crypt-boxed-area mt-3">
+   <h6 class="crypt-bg-head"><b class="crypt-up">BUY</b> / <b class="crypt-down">SELL</b></h6>
+   <div class="row no-gutters">
+       <div class="col-md-6">
+           <div class="crypt-buy-sell-form">
+               <p class="contrast-color">Buy <span class="crypt-up">{{mainService?.symbol}}</span> <span class="fright">Available: <b class="crypt-up">20.00 {{mainService?.currency}}</b></span></p>
+                <div class="crypt-buy">
+                    <div class="input-group mb-2">
+                        <input type="text" class="form-control" placeholder="0.02323476" readonly>
+                        <div class="input-group-append"> <span class="input-group-text">{{mainService?.symbol}}</span> </div>
+                    </div>
+                    <div class="input-group mb-2">
+                        <input type="number" class="form-control">
+                        <div class="input-group-append"> <span class="input-group-text">{{mainService?.currency}}</span> </div>
+                    </div>
+                    <div class="mb-2">
+                        <mat-button-toggle-group #group="matButtonToggleGroup">
+                          <mat-button-toggle value="25">
+                            <span>25 %</span>
+                          </mat-button-toggle>
+                          <mat-button-toggle value="50">
+                            <span>50 %</span>
+                          </mat-button-toggle>
+                          <mat-button-toggle value="75">
+                            <span>75 %</span>
+                          </mat-button-toggle>
+                          <mat-button-toggle value="100">
+                            <span>100 %</span>
+                          </mat-button-toggle>
+                        </mat-button-toggle-group>
+                    </div>
+                    <div class="mb-2">
+                        <p class="contrast-color">Fee: <span class="fright">0.1% = 0.02 {{mainService?.currency}}</span></p>
+                        <p class="contrast-color">You will pay: <span class="fright">0.09834 {{mainService?.currency}}</span></p>
+                    </div>
+                    <div class="menu-green"><a class="crypt-button-green-full">Buy</a></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="crypt-buy-sell-form">
+                <p class="contrast-color">Sell <span class="crypt-down">{{mainService?.symbol}}</span> <span class="fright">Available: <b class="crypt-down">1000.00 {{mainService?.symbol}}</b></span></p>
+                <div class="crypt-sell">
+                    <div class="input-group mb-2">
+                        <input type="text" class="form-control" placeholder="0.02323476" readonly>
+                        <div class="input-group-append"> <span class="input-group-text">{{mainService?.currency}}</span> </div>
+                    </div>
+                    <div class="input-group mb-2">
+                        <input type="number" class="form-control">
+                        <div class="input-group-append"> <span class="input-group-text">{{mainService?.symbol}}</span> </div>
+                    </div>
+                    <div class="mb-2">
+                        <mat-button-toggle-group #group="matButtonToggleGroup">
+                          <mat-button-toggle value="25">
+                            <span>25 %</span>
+                          </mat-button-toggle>
+                          <mat-button-toggle value="50">
+                            <span>50 %</span>
+                          </mat-button-toggle>
+                          <mat-button-toggle value="75">
+                            <span>75 %</span>
+                          </mat-button-toggle>
+                          <mat-button-toggle value="100">
+                            <span>100 %</span>
+                          </mat-button-toggle>
+                        </mat-button-toggle-group>
+                    </div>
+                    <div class="mb-2">
+                        <p class="contrast-color">Fee: <span class="fright">0.1% = 0.02 {{mainService?.currency}}</span></p>
+                        <p class="contrast-color">You will get: <span class="fright">0.09834 {{mainService?.currency}}</span></p>
+                    </div>
+                    <div class="menu-red"><a class="crypt-button-red-full">Sell</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

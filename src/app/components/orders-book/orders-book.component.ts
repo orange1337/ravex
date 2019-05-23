@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnDestroy } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy,  ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { MainService } from '../../services/main.service';
 
 
@@ -6,7 +6,7 @@ import { MainService } from '../../services/main.service';
     selector: 'orders-book',
     templateUrl: './orders-book.component.html'
 })
-export class OrdersBookComponent implements OnInit, OnDestroy {
+export class OrdersBookComponent implements OnInit, OnDestroy, AfterViewInit {
 
     @Input() columns;
     @Input() dataSource;
@@ -17,7 +17,19 @@ export class OrdersBookComponent implements OnInit, OnDestroy {
 
     constructor(public mainService: MainService){}
 
+    @ViewChild('scrollMe') private myScrollContainer: ElementRef;
+
+    scrollToBottom(): void {
+      try {
+          this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
+      } catch(err) { }                 
+    }
+
     ngOnInit() {}
+    
+    ngAfterViewInit(){
+        this.scrollToBottom();
+    }
 
     ngOnDestroy() {}
 }

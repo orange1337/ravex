@@ -25,7 +25,12 @@
      <tr mat-header-row *matHeaderRowDef="columns; sticky: true"></tr>
      <tr mat-row *matRowDef="let row; columns: columns;"></tr>
    </table>
-   <div class="empty-container" *ngIf="!dataSource">Empty</div>
+   
+   <div class="main-spinner" *ngIf="!dataSource">
+    <mat-progress-spinner color="primary" mode="indeterminate" [diameter]="40"></mat-progress-spinner>
+   </div>
+  
+    <div class="empty-container" *ngIf="!dataSource?.length">Empty</div>
  </div>
  
  <div class="order-book-price main-green">{{coinsList[mainService.ftid]?.price}} <i class="far fa-long-arrow-up"></i></div>
@@ -54,5 +59,9 @@
      <tr mat-header-row *matHeaderRowDef="columns; sticky: true"></tr>
      <tr mat-row *matRowDef="let row; columns: columns;"></tr>
    </table>
-   <div class="empty-container" *ngIf="!dataSource">Empty</div>
+   <div class="main-spinner" *ngIf="!dataSource">
+     <mat-progress-spinner color="primary" mode="indeterminate" [diameter]="40"></mat-progress-spinner>
+   </div>
+  
+    <div class="empty-container" *ngIf="!dataSource?.length">Empty</div>
  </div>

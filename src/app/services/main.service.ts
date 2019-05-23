@@ -10,6 +10,7 @@ export class MainService {
     public symbol = 'PTS';
     public author = 'prospectorsa';
     public ftid = '100000000000048';
+    public logo = (window.innerWidth <= 500) ? 'favicon_t.png': 'ravex.svg';
 
     constructor(private http: HttpClient){}
 

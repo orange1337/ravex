@@ -15,7 +15,6 @@ export class ExchangeComponent implements OnInit {
   ngOnInit() {
   		this.mainService.updateHeader.subscribe( (res: any) => {
   				this.coinInfo = res;
-  				console.log(res);
   		});
   }
 

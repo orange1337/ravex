@@ -5,15 +5,19 @@
                     <div class="col-xl-3 col-lg-4 col-md-4 col-sm-5">
                         <div class="row">
                             <div class="col-xs-2">
-                                <div class="crypt-logo"><a href="/trade"><img src="/assets/images/ravex.svg" alt=""></a></div>
+                                <div class="crypt-logo">
+                                    <a href="/trade">
+                                        <img src="/assets/images/{{mainService.logo}}" alt="">
+                                    </a>
+                                </div>
                             </div>
                             <div class="col-xs-2">
                                 <div class="crypt-mega-dropdown-menu"> 
                                     <a  class="crypt-mega-dropdown-toggle">
                                         <img alt="" class="coin-img" src="https://prospectors.io/auction/img/sets/pb.png">
                                         <div class="coin-header-name">
-                                            <div>{{mainService?.currency}}/{{coinInfo?.symbol}}</div>
-                                            <div class="token-author">{{coinInfo?.author}}</div>
+                                            <div>{{mainService?.currency}}/{{mainService.symbol}}</div>
+                                            <div class="token-author">{{mainService.author}}</div>
                                         </div>
                                     </a>
                                 </div>
@@ -22,20 +26,20 @@
                     </div>
                     <div class="col-sm-4 col-md-4 col-lg-4 header-coin-grid-container">
                         <div class="header-coin-grid header-coin-info">
-                            <p class="header-price">{{coinInfo?.price || '0.0000'}} {{mainService?.currency}}</p>
-                            <p [ngClass]="{'crypt-up' : coinInfo?.change > 0, 'crypt-down' : coinInfo?.change < 0}">{{coinInfo?.change || '0.0000'}}%</p>
+                            <p class="header-price">{{coinInfo?.price || mainService.priceNull}} {{mainService?.currency}}</p>
+                            <p [ngClass]="{'crypt-up' : coinInfo?.change > 0, 'crypt-down' : coinInfo?.change < 0}">{{coinInfo?.change || mainService.priceNull}}%</p>
                         </div>
                         <div class="header-coin-grid header-coin-info">
                             <p class="header-coin-info-title">24h Lowest</p>
-                            <p class="crypt-down">{{coinInfo?.min || '0.0000'}} {{mainService?.currency}}</p>
+                            <p class="crypt-down">{{coinInfo?.min || mainService.priceNull}} {{mainService?.currency}}</p>
                         </div>
                         <div class="header-coin-grid header-coin-info">
                             <p class="header-coin-info-title">24h Highest</p>
-                            <p class="crypt-up">{{coinInfo?.max || '0.0000'}} {{mainService?.currency}}</p>
+                            <p class="crypt-up">{{coinInfo?.max || mainService.priceNull}} {{mainService?.currency}}</p>
                         </div>
                         <div class="header-coin-grid header-coin-info">
                             <p class="header-coin-info-title">24h Vol.</p>
-                            <p>{{coinInfo?.vol || '0.0000'}} {{coinInfo?.symbol}}</p>
+                            <p>{{coinInfo?.vol || mainService.priceNull}} {{mainService.symbol}}</p>
                         </div>
                     </div>
                     <div class="col-xl-5ноу  col-lg-5 col-md-5 d-none d-md-block d-lg-block">

@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewChecked, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MainService } from '../../../services/main.service';
 
 @Component({
@@ -6,18 +6,16 @@ import { MainService } from '../../../services/main.service';
   templateUrl: './simpleasset.component.html',
   styleUrls: ['./simpleasset.component.scss']
 })
-export class SimpleassetComponent implements OnInit, AfterViewChecked {
+export class SimpleassetComponent implements OnInit {
 
   constructor(public mainService: MainService) { }
-
-  @ViewChild('scrollMe') private myScrollContainer: ElementRef;
 
   displayedColumns = ['symbol', 'price', 'change', 'volume'];
   displayedColumnsSells = ['price', 'qty', 'total'];
   displayedColumnsBalances = ['symbol', 'amount', 'value'];
-  dataSource;
-  dataSourceSells;
-  dataSourceBalances;
+  dataSource: any;
+  dataSourceSells: any;
+  dataSourceBalances: any;
   coinsList = {};
 
   getCoinsTable(){
@@ -25,18 +23,14 @@ export class SimpleassetComponent implements OnInit, AfterViewChecked {
   						.subscribe((res: any) => {
   							this.dataSource = res.coins; 
                 this.coinsList = this.mainService.generetCoinsArr(res);
-                let data = {
-                    ...this.coinsList[this.mainService.ftid], 
-                    symbol: this.mainService.symbol,
-                    author: this.mainService.author
-                };
-                this.mainService.updateHeader.emit(data);
+                this.mainService.updateHeader.emit(this.coinsList[this.mainService.ftid]);
   						}, err => {	
   							console.error(err);
   						})
   }
 
   getOrderSells(){
+      this.dataSourceSells = null;
   		this.mainService.getSAsells(this.mainService.author, this.mainService.symbol)
   						.subscribe((res: any) => {
   							this.dataSourceSells = res.orders;
@@ -44,19 +38,16 @@ export class SimpleassetComponent implements OnInit, AfterViewChecked {
   							console.error(err);
   						})
   }
-  
-  scrollToBottom(): void {
-      try {
-          this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
-      } catch(err) { }                 
+
+  updateTokenView(event){
+      this.mainService.updateHeader.emit(this.coinsList[this.mainService.ftid]);
+      this.getOrderSells();
   }
+ 
 
   ngOnInit() {
   	this.getCoinsTable();
   	this.getOrderSells();
   }
-  
-  ngAfterViewChecked() {        
-        this.scrollToBottom();        
-  }
+
 }

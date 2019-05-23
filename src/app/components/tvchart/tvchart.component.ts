@@ -132,7 +132,6 @@ export class TvChartContainerComponent implements OnInit, OnDestroy {
         this._tvWidget = tvWidget;
 
         tvWidget.onChartReady(() => {
-            console.log(tvWidget);
             tvWidget.addCustomCSSFile('/assets/libs/tv-custom.css');
             /*const button = tvWidget.createButton()
                 .attr('title', 'Click to show a notification popup')

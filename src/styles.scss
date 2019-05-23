@@ -112,6 +112,21 @@ body {
 a{
     cursor: pointer;
 }
+.main-spinner{
+    position: absolute;
+    width: 100%;
+    top:0;
+    left:0;
+    height: 100%;
+    background: rgba(24, 37, 72, 0.7);
+    z-index: 100;
+}
+.main-spinner .mat-progress-spinner{
+    left: 50%;
+    top: 50%;
+    margin-left: -20px;
+    margin-top: -20px;
+}
 .text-right{
     text-align: right;
 }
@@ -141,6 +156,7 @@ a{
     background: #192648;
 }
 .mat-elevation-z8{
+    position: relative;
     box-shadow: none !important;
 }
 .mat-row:nth-child(even){
@@ -149,8 +165,8 @@ a{
 .mat-row:nth-child(odd){
     background-color: #16203f;
 }
-.mat-row:hover {
-    background-color: #212d52;
+.mat-row:hover, .row-selected {
+    background-color: #212d52 !important;
     cursor: pointer;
 }
 .coin-image{
@@ -184,14 +200,14 @@ a{
     overflow-y: scroll; 
 }
 .grid-table-bottom{
-    height: 38vh;
-    min-height: 290px;
+    height: calc(39vh - 5px);
+    min-height: 299px;
     background: #1a2748;
     overflow-y: scroll;
 }
 .grid-table-bottom-left{
-    height: calc(37vh - 39px);
-    min-height: 257px;
+    height: calc(38vh - 45px);
+    min-height: 267px;
     background: #1a2748;
     overflow-y: scroll;
 }
@@ -237,7 +253,6 @@ a{
     font-weight: lighter;
 }
 .bottom-container{
-    margin-top: 14px;
     padding-right: 13px;
     padding-left: 13px;
 }
@@ -301,6 +316,37 @@ footer a{
 footer a:hover{
     color: #27d8db !important;
     cursor: pointer;
+}
+.buy-sell-container{
+    height: calc(33vh - 5px);
+    min-height: 266px;
+}
+
+@media only screen and (max-width: 500px) {
+    body{
+        margin-top: 90px;
+    }
+    .crypt-logo{
+        padding: 19px !important;
+    }
+    .crypt-logo img{
+        width: 35px !important;
+    }
+    .right-container{
+        padding-left: 7px !important;
+    }
+    .left-container{
+        padding-right: 7px !important;
+    }
+    .tradingview-widget-container, .left-container{
+        margin-top: 1rem;
+    }
+    .header-coin-grid-container{
+        display: none;
+    }
+    .crypt-dark .crypt-mega-dropdown-menu a.crypt-mega-dropdown-toggle{
+        border: none;
+    }
 }
 
 

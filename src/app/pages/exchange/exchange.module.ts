@@ -15,7 +15,8 @@ import { OrdersBookComponent } from '../../components/orders-book/orders-book.co
 
 import { MatTabsModule,
 		 MatTableModule,
-     MatButtonToggleModule
+     MatButtonToggleModule,
+     MatProgressSpinnerModule
 } from '@angular/material';
 
 import { MainService } from '../../services/main.service';
@@ -40,6 +41,7 @@ import { ToastaModule } from 'ngx-toasta';
     MatTabsModule,
     MatTableModule,
     MatButtonToggleModule,
+    MatProgressSpinnerModule,
     ToastaModule.forRoot()
   ],
   providers: [MainService, ScatterService]

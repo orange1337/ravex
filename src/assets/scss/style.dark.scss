@@ -21,8 +21,8 @@ Table Of contents
 ------------- Helper Class ---------------
  */
 
-body{
-    background: #f9faff;
+.crypt-dark {
+    background: #111935;
     overflow-x: hidden;
     margin-top: 65px;
     font-size: 13px;
@@ -58,7 +58,7 @@ iframe body{
 .crypt-deepblue-segment{
     background: #192648;
 }
-body.crypt-dark .input-group-text{
+.crypt-dark .input-group-text{
     color: #e9ecef;
     text-align: center;
     white-space: nowrap;
@@ -67,7 +67,7 @@ body.crypt-dark .input-group-text{
     border-radius: 0;
     font-size: 13px;
 }
-body.crypt-dark .form-control {
+.crypt-dark .form-control {
     color: #ffffff;
     background-color: #141e3f;
     background-clip: padding-box;
@@ -159,7 +159,7 @@ g[opacity="0.4"]{
     color: #555;
     box-shadow: 0 3px 30px #f1f1f1;
 }
-body.crypt-dark .crypt-btn:hover{
+.crypt-dark .crypt-btn:hover{
     box-shadow: none;
 }
 .crypt-button-inline{
@@ -188,13 +188,13 @@ body.crypt-dark .crypt-btn:hover{
     border: 1px solid #f1f1f1;
     background: #fff;
 }
-body.crypt-dark .crypt-bg-head{
+.crypt-dark .crypt-bg-head{
     background: #151f3f;
     padding: 12px 15px;
     font-size: 13px;
     margin-bottom: 0;
 }
-body.crypt-dark .crypt-boxed-area{
+.crypt-dark .crypt-boxed-area{
     background: #192648;
     border: none;
     color: #fff;
@@ -611,7 +611,7 @@ body.crypt-dark .crypt-boxed-area{
     z-index: 11;
     padding-top: 115px;
 }
-body.crypt-dark .crypt-side-menu{
+.crypt-dark .crypt-side-menu{
     background: #192648 !important;
 }
 .crypt-left-sided{} 
@@ -633,7 +633,7 @@ body.crypt-dark .crypt-side-menu{
     text-decoration: none;
     position: relative;
 }
-body.crypt-dark .crypt-side-menu ul li a{
+.crypt-dark .crypt-side-menu ul li a{
     color: #fff;
 }
 .crypt-side-menu ul li a:after{
@@ -693,19 +693,19 @@ table th{
 }
 
 /*---- Dark ----*/
-body.crypt-dark .crypt-market-status{
+.crypt-dark .crypt-market-status{
     background: #fff;
     box-shadow: none;
 }
-body.crypt-dark ul.nav-tabs{
+.crypt-dark ul.nav-tabs{
     padding: 10px 0px;
     border: none;
     background: #17213f;
 }
-body.crypt-dark ul.nav-tabs li{
+.crypt-dark ul.nav-tabs li{
     padding: 0 10px;
 }
-body.crypt-dark ul.nav-tabs li a{
+.crypt-dark ul.nav-tabs li a{
     color: #455a89;
     font-weight: 600;
     text-transform: uppercase;
@@ -713,53 +713,53 @@ body.crypt-dark ul.nav-tabs li a{
     padding: 10px 7px;
     font-size: 12px;
 }
-body.crypt-dark ul.nav-tabs li{}
-body.crypt-dark ul.nav-tabs li a.active{
+.crypt-dark ul.nav-tabs li{}
+.crypt-dark ul.nav-tabs li a.active{
     border-bottom: 2px solid #425785;
     color: #fff;
 }
-body.crypt-dark .tab-content table{
+.crypt-dark .tab-content table{
     margin-bottom: 0;
 }
-body.crypt-dark .tab-content table thead{
+.crypt-dark .tab-content table thead{
     background: #0f1b4c;
     color: #fff;
 }
-body.crypt-dark .tab-content table thead tr{
+.crypt-dark .tab-content table thead tr{
     cursor: none;
     background: #0f1b4c !important;
 }
-body.crypt-dark .tab-content table thead tr:hover{
+.crypt-dark .tab-content table thead tr:hover{
     background: #0f1b4c !important;
 
 }
-body.crypt-dark .tab-content table tbody{}
-body.crypt-dark .tab-content table tr:hover{
+.crypt-dark .tab-content table tbody{}
+.crypt-dark .tab-content table tr:hover{
     background: #242c40 !important;
     cursor: pointer;
 }
-body.crypt-dark .tab-content table tr:nth-of-type(odd){
+.crypt-dark .tab-content table tr:nth-of-type(odd){
     background: #192648;
     color: #fff;
 }
-body.crypt-dark .tab-content table tr:nth-of-type(even){
+.crypt-dark .tab-content table tr:nth-of-type(even){
     background: #11152b;
     color: #fff;
 }
-body.crypt-dark .crypt-table-danger{
+.crypt-dark .crypt-table-danger{
     background: #ffedea !important;
 }
-body.crypt-dark .crypt-table-success{
+.crypt-dark .crypt-table-success{
     background: #f9fcff !important;
 }
-body.crypt-dark .crypt-table-hover tr:hover{
+.crypt-dark .crypt-table-hover tr:hover{
     background: #ffedea !important;
 }
-body.crypt-dark table td,
-body.crypt-dark table th{
+.crypt-dark table td,
+.crypt-dark table th{
     border: none !important;
 }
-body.crypt-dark .no-orders{
+.crypt-dark .no-orders{
     background: #192648;
 }
 /*------------ Table dark ends -------*/
@@ -792,12 +792,12 @@ body.crypt-dark .no-orders{
     padding: 20px;
     border-top: 1px solid #f1f1f1;
 }
-body.crypt-dark .crypt-buy{
+.crypt-dark .crypt-buy{
     padding: 20px;
     border-top: 1px solid #1d2755;
     border-right: 1px solid #1d2755;
 }
-body.crypt-dark .crypt-sell{
+.crypt-dark .crypt-sell{
     padding: 20px;
     border-top: 1px solid #1d2755;
 }
@@ -810,7 +810,7 @@ body.crypt-dark .crypt-sell{
     background: #fff;
     font-size: 15px;
 }
-body.crypt-dark .crypt-table-market-cap{
+.crypt-dark .crypt-table-market-cap{
     background: none;
     font-size: 15px;
     color: #fff;
@@ -818,7 +818,7 @@ body.crypt-dark .crypt-table-market-cap{
 .crypt-table-market-cap thead{
     background: #ecf4fe;
 }
-body.crypt-dark .crypt-table-market-cap thead{
+.crypt-dark .crypt-table-market-cap thead{
     background: #1f2638;
 }
 .crypt-table-market-cap thead tr th{
@@ -846,7 +846,7 @@ body.crypt-dark .crypt-table-market-cap thead{
 .crypt-table-market-cap tbody tr td a{
     color: #555;
 }
-body.crypt-dark .crypt-table-market-cap tbody tr td a{
+.crypt-dark .crypt-table-market-cap tbody tr td a{
     color: #fff;
 }
 .crypt-table-market-cap tbody tr td:last-child{
@@ -881,7 +881,7 @@ img.crypt-market-cap-logo{
     z-index: -1;
     box-shadow: 0 3px 15px #f1f1f1;
 }
-body.crypt-dark .crypt-fulldiv-linechart:after{
+.crypt-dark .crypt-fulldiv-linechart:after{
     background: #202943;
     box-shadow: none;
 }
@@ -932,21 +932,21 @@ body.crypt-dark .crypt-fulldiv-linechart:after{
 .crypt-currency-slider{
     border: 1px solid #ecf4fe;
 }
-body.crypt-dark .crypt-currency-slider{
+.crypt-dark .crypt-currency-slider{
     border: none;
 }
 .crypt-slider-content{
     background: #fff;
     /* padding: 40px; */
 }
-body.crypt-dark .crypt-slider-content{
+.crypt-dark .crypt-slider-content{
     background: #121a2f;
 }
 .crypt-slider-content .crypt-slider-balance{
     padding: 60px 25px 60px 36px;
     border-right: 1px solid #ecf4fe;
 }
-body.crypt-dark .crypt-slider-content .crypt-slider-balance{
+.crypt-dark .crypt-slider-content .crypt-slider-balance{
     border-right: 1px solid #202943;   
 }
 .crypt-slider-content .crypt-slider-balance h5{}
@@ -975,7 +975,7 @@ body.crypt-dark .crypt-slider-content .crypt-slider-balance{
     background: #f9fcff;
     padding: 10px;
 }
-body.crypt-dark .crypt-dash-search input[type=search]{
+.crypt-dark .crypt-dash-search input[type=search]{
     height: 48px;
     border: 1px solid #202943;
     width: 100%;
@@ -998,7 +998,7 @@ body.crypt-dark .crypt-dash-search input[type=search]{
     font-weight: 600;
     /* right: 0; */
 }
-body.crypt-dark .crypt-dash-search button[type=submit] i{
+.crypt-dark .crypt-dash-search button[type=submit] i{
     color: #fff;
     /* right: 0; */
 }
@@ -1014,7 +1014,7 @@ body.crypt-dark .crypt-dash-search button[type=submit] i{
     border: 1px solid #ecf4fe;
     margin-bottom: 10px;
 }
-body.crypt-dark .crypt-big-list li{
+.crypt-dark .crypt-big-list li{
     border: 1px solid #2f3a56;
 }
 .crypt-big-list li a{
@@ -1030,15 +1030,15 @@ body.crypt-dark .crypt-big-list li{
     -o-transition: all 0.4s ease;
     -ms-transition: all 0.4s ease;
 }
-body.crypt-dark .crypt-big-list li a{
+.crypt-dark .crypt-big-list li a{
     color: #fff;
 }
 .crypt-big-list li a:hover,
 .crypt-big-list li a:focus{
     background: #ffedea;
 }
-body.crypt-dark .crypt-big-list li a:hover,
-body.crypt-dark .crypt-big-list li a:focus{
+.crypt-dark .crypt-big-list li a:hover,
+.crypt-dark .crypt-big-list li a:focus{
     background: #242c40 !important;
 }
 .crypt-big-list li:last-child{
@@ -1066,7 +1066,7 @@ body.crypt-dark .crypt-big-list li a:focus{
     display: inline-block;
     margin-top: 10px;
 }
-body.crypt-dark .crypt-withdraw-body{
+.crypt-dark .crypt-withdraw-body{
     background: #192648 !important;
 }
 .crypt-withdraw-body .nav-pills{
@@ -1078,10 +1078,10 @@ body.crypt-dark .crypt-withdraw-body{
     font-size: 13px;
     font-weight: 800;
 }
-body.crypt-dark .crypt-withdraw-body .nav-pills a{
+.crypt-dark .crypt-withdraw-body .nav-pills a{
     color: #fff;
 }
-body.crypt-dark .crypt-withdraw-body .nav-pills a.active{
+.crypt-dark .crypt-withdraw-body .nav-pills a.active{
 
     color: #f7614e;
 }
@@ -1100,7 +1100,7 @@ body.crypt-dark .crypt-withdraw-body .nav-pills a.active{
     padding: 30px;
 }
 
-body.crypt-dark .crypt-withdraw-body .tab-content{
+.crypt-dark .crypt-withdraw-body .tab-content{
     border-left: 1px solid #2f3a56;
     padding: 30px;
 }
@@ -1135,7 +1135,7 @@ body.crypt-dark .crypt-withdraw-body .tab-content{
   font-weight: 600;
 }
 
-body.crypt-dark .crypt-radio-boxed label{
+.crypt-dark .crypt-radio-boxed label{
   display: block;
   color: #fff;
   position: relative;
@@ -1211,7 +1211,7 @@ select.crypt-image-select{
     border: 1px solid #f1f1f1;
     outline: none;
 }
-body.crypt-dark select.crypt-image-select{
+.crypt-dark select.crypt-image-select{
     padding: 15px;
     width: 100%;
     border: 1px solid #2f3a56;

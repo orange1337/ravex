@@ -5,18 +5,22 @@ import {
     ChartingLibraryWidgetOptions,
     LanguageCode,
 } from '../../../assets/libs/charting_library/charting_library/charting_library.min';
+import { MainService } from '../../services/main.service';
 
 @Component({
     selector: 'app-tv-chart-container',
     template: `<div class="app-tv-chart-container" id="tv_chart_container"></div>`
 })
 export class TvChartContainerComponent implements OnInit, OnDestroy {
-    private _symbol: ChartingLibraryWidgetOptions['symbol'] = 'AAPL';
+
+    constructor(public mainService: MainService){}
+
+    private _symbol: ChartingLibraryWidgetOptions['symbol'] = this.mainService.symbol;
     private _interval: ChartingLibraryWidgetOptions['interval'] = 'H';
     // BEWARE: no trailing slash is expected in feed URL
-    private _datafeedUrl = 'https://demo_feed.tradingview.com';
+    private _datafeedUrl = '/tv'; //'https://demo_feed.tradingview.com';
     private _libraryPath: ChartingLibraryWidgetOptions['library_path'] = '/assets/libs/charting_library/charting_library/';
-    private _chartsStorageUrl: ChartingLibraryWidgetOptions['charts_storage_url'] = 'https://saveload.tradingview.com';
+    private _chartsStorageUrl: ChartingLibraryWidgetOptions['charts_storage_url'] = '/'; //'https://saveload.tradingview.com';
     private _chartsStorageApiVersion: ChartingLibraryWidgetOptions['charts_storage_api_version'] = '1.1';
     private _clientId: ChartingLibraryWidgetOptions['client_id'] = 'tradingview.com';
     private _userId: ChartingLibraryWidgetOptions['user_id'] = 'public_user_id';

@@ -1,5 +1,6 @@
 @import '~@angular/material/theming';
 @import './assets/scss/style.dark.scss';
+@import './assets/scss/home/style.scss';
 
 @import '~@angular/material/theming';
 // Plus imports for other components in your app.
@@ -103,8 +104,9 @@ html, body {
 	height: 100%; 
 	padding: 0;
 	margin: 0;
+    background: #111935;
 }
-body { 
+.crypt-dark { 
 	margin-top: 100px; 
 	font-family: "ClanProNews", "Helvetica Neue", sans-serif;
 	-webkit-font-smoothing: antialiased; 

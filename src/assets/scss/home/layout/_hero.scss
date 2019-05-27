@@ -1,6 +1,6 @@
 .hero {
 	text-align: center;
-    padding-top: 48px;
+    padding-top: 88px;
 	padding-bottom: 88px;
 }
 
@@ -42,8 +42,8 @@
 
 .hero-media-illustration {
 	position: absolute;
-    top: -10%;
-    left: -15px;
+    top: -16%;
+    left: 12px;
 
 	img,
 	svg {
@@ -57,12 +57,13 @@
 
 .hero-media-image {
 	margin: 0 auto;
-	box-shadow: 48px 16px 48px rgba(color(bg, 1i), .12);
+	//box-shadow: 48px 16px 48px rgba(color(bg, 1i), .12);
 	border-radius: 4px;
-	transform: perspective(1000px) rotateY(16deg) rotateX(2deg) rotateZ(-7deg) scaleY(.95) translatex(2%);
+	width: 100%;
+	//transform: perspective(1000px) rotateY(16deg) rotateX(2deg) rotateZ(-7deg) scaleY(.95) translatex(2%);
 
 	.lights-off & {
-		box-shadow: 48px 16px 48px rgba(darken(color(bg, 1i), 35%), .2);
+		//box-shadow: 48px 16px 48px rgba(darken(color(bg, 1i), 35%), .2);
 	}
 }
 
@@ -88,7 +89,7 @@
 
     .hero {
 		text-align: left;
-        padding-top: 88px;
+        padding-top: 115px;
 		padding-bottom: 120px;
     }
 
@@ -144,8 +145,8 @@
 	.header-illustration-image {
 		display: block;
 		position: absolute;
-		top: -168px;
-		left: -722px;
+		top: -199px;
+    	left: -628px;
 		width: 1440px;
 		height: 324px;
 	}

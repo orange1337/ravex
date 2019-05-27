@@ -7,9 +7,11 @@
     }
 	background: color(bg, 1i);
     color: color(typography, 2);
+    margin-top: 0 !important;
 
     a {
         @include anchor-aspect(footer);
+        margin-left: 0;
     }
 
     &::before {

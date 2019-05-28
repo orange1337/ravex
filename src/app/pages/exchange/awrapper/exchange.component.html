@@ -46,18 +46,24 @@
                     <div class="col-xl-5ноу  col-lg-5 col-md-5 d-none d-md-block d-lg-block">
                         <ul class="crypt-heading-menu fright">
                             <li><a routerLink="/trade/sa" class="crypt-active">Simple Assets</a></li>
-                            <li><a routerLink="/trade">EOS main</a></li>
+                            <!--<li><a routerLink="/trade">EOS main</a></li>-->
                             <li><a>My Account</a></li>
-                            <span class="hr-right"></span>
                             <li><a>EN <i class="far fa-chevron-down"></i></a></li>
-                            <li><a class="btn-login">login</a></li>
+                            <span class="hr-right"></span>
+                            <li *ngIf="!loginEOSService.connected"><a class="btn-login" (click)="loginEOSService.openPopup()">login</a></li>
+                            <li *ngIf="loginEOSService.connected">
+                                <a class="btn-logout" [matMenuTriggerFor]="beforeMenu">{{loginEOSService.accountName}} <i class="far fa-chevron-down"></i></a> 
+                                <mat-menu #beforeMenu="matMenu" xPosition="before">
+                                  <button mat-menu-item (click)="loginEOSService.logout()">Logout</button>
+                                </mat-menu>
+                            </li>
                         </ul>
                     </div><i class="menu-toggle pe-7s-menu d-xs-block d-sm-block d-md-none d-sm-none"></i></div>
             </div>
         </div>
 </header>
 
-<ngx-toasta></ngx-toasta>
+<app-login-eos></app-login-eos>
 <router-outlet></router-outlet>
 
 <footer>

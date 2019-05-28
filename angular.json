@@ -28,8 +28,7 @@
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
-              "src/styles.scss",
-              "node_modules/ngx-toasta/styles/style-material.css"
+              "src/styles.scss"
             ],
             "scripts": []
           },
@@ -86,8 +85,7 @@
             "karmaConfig": "src/karma.conf.js",
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
-              "src/styles.scss",
-              "node_modules/ngx-toasta/styles/style-material.css"
+              "src/styles.scss"
             ],
             "scripts": [],
             "assets": [

@@ -1,5 +1,5 @@
 <ul class="nav nav-tabs" id="crypt-tab">
-    <li role="presentation" *ngFor="let elem of tabs; let i = index;"><a [ngClass]="{'active': tabIndex === i}">{{elem}}</a></li>
+    <li role="presentation" *ngFor="let elem of tabs; let i = index;"><a [ngClass]="{'active': index === 0}">{{elem}}</a></li>
 </ul>
 <div class="example-container mat-elevation-z8 grid-table-bottom-left">
   <table mat-table [dataSource]="dataSource">
@@ -25,5 +25,5 @@
     <tr mat-header-row *matHeaderRowDef="columns; sticky: true"></tr>
     <tr mat-row *matRowDef="let row; columns: columns;"></tr>
   </table>
-  <div class="empty-container" *ngIf="!dataSource">Empty</div>
+  <div class="empty-container" *ngIf="dataSource && !dataSource.length">Empty</div>
 </div>

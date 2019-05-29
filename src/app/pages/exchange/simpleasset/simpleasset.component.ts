@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MainService } from '../../../services/main.service';
+import { ScatterService } from '../../../services/scatter.service';
+import { LoginEOSService } from 'eos-ulm';
 
 @Component({
   selector: 'app-simpleasset',
@@ -8,7 +10,9 @@ import { MainService } from '../../../services/main.service';
 })
 export class SimpleassetComponent implements OnInit {
 
-  constructor(public mainService: MainService) { }
+  constructor(public mainService: MainService, 
+              public scatterService: ScatterService,
+              public loginEOSService: LoginEOSService) { }
 
   displayedColumns = ['symbol', 'price', 'change', 'volume'];
   displayedColumnsSells = ['price', 'qty', 'total'];
@@ -39,6 +43,21 @@ export class SimpleassetComponent implements OnInit {
   						})
   }
 
+  getBalances(){
+      this.scatterService.getAvailableItemsFT()
+          .then(res => {
+              if (!res || !res.rows){
+                  return;
+              }
+              this.dataSourceBalances = res.rows.map(elem => {
+                    let splitElem = elem.balance.split(" ");
+                    return {id: elem.id, author: elem.author, symbol: splitElem[1], qty: splitElem[0]};
+              });
+          }).catch(err => {
+              console.error(err);
+          });
+  }
+
   updateTokenView(event){
       this.mainService.updateHeader.emit(this.coinsList[this.mainService.ftid]);
       this.getOrderSells();
@@ -48,6 +67,9 @@ export class SimpleassetComponent implements OnInit {
   ngOnInit() {
   	this.getCoinsTable();
   	this.getOrderSells();
+    this.loginEOSService.loggedIn.subscribe(() => {
+        this.getBalances();
+    });
   }
 
 }

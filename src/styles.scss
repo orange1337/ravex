@@ -106,6 +106,9 @@ html, body {
 	margin: 0;
     background: #111935;
 }
+* {
+    outline: none !important;
+}
 .crypt-dark { 
 	margin-top: 100px; 
 	font-family: "ClanProNews", "Helvetica Neue", sans-serif;
@@ -351,6 +354,19 @@ footer a:hover{
     border: 1px solid #202e51 !important;
     opacity: 1 !important;
 }
+.mat-menu-panel{
+    background: #16203f;
+}
+.mat-menu-item{
+    text-align: center !important;
+    color: #455a89;
+}
+.mat-menu-item:hover{
+    color: #27d8db;
+}
+
+
+
 
 @media only screen and (max-width: 500px) {
     .crypt-dark{

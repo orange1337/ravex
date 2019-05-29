@@ -54,7 +54,7 @@
                             <li *ngIf="loginEOSService.connected">
                                 <a class="btn-logout" [matMenuTriggerFor]="beforeMenu">{{loginEOSService.accountName}} <i class="far fa-chevron-down"></i></a> 
                                 <mat-menu #beforeMenu="matMenu" xPosition="before">
-                                  <button mat-menu-item (click)="loginEOSService.logout()">Logout</button>
+                                  <button mat-menu-item (click)="loginEOSService.logout()">logout</button>
                                 </mat-menu>
                             </li>
                         </ul>

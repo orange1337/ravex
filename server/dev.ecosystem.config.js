@@ -18,5 +18,10 @@ module.exports = {
     name        : `market_history`,
     script      : `./server/workers/market.history.worker.js`,
     watch: true
+  },
+  {
+    name        : `market_history`,
+    script      : `./server/workers/assets.history.worker.js`,
+    watch: true
   }]
 }

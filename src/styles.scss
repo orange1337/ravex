@@ -331,12 +331,6 @@ footer a:hover{
 #popup-window{
     z-index: 1000 !important;
     color: #fff !important;
-    position: fixed !important;
-}
-.login-wallet-logo{
-    img {
-        display: inline-block !important; 
-    }
 }
 .login-wallet{
     background: none !important;
@@ -364,6 +358,7 @@ footer a:hover{
 .mat-menu-item:hover{
     color: #27d8db;
 }
+
 
 
 

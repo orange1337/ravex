@@ -68,6 +68,8 @@ export class SimpleassetComponent implements OnInit {
   	this.getCoinsTable();
   	this.getOrderSells();
     this.loginEOSService.loggedIn.subscribe(() => {
+        console.log('ScatterJS', this.loginEOSService.ScatterJS);
+        console.log('eosTock', this.loginEOSService.eosTock);
         this.getBalances();
     });
   }

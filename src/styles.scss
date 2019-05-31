@@ -332,16 +332,16 @@ footer a:hover{
     z-index: 1000 !important;
     color: #fff !important;
 }
-.login-wallet{
-    background: none !important;
-    border: 1px solid #202e51;
-}
 .login-wallet:hover{
     background: #16203f !important;
 }
-.popup-container{
-    background: #182548 !important;
+.popup-header-text, .popup-close-icon, .login-wallet{
+    background: #1f2d51 !important;
 }
+.login-wallet-text, .login-wallet-others {
+    color: #455a89 !important;
+}
+//  end popup
 
 #toasta .toast.toasta-theme-material {
     background-color: #16203f !important;

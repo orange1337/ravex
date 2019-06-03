@@ -1,6 +1,7 @@
-import { Component, Input, OnInit, OnDestroy } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy, EventEmitter, Output } from '@angular/core';
 import { MainService } from '../../services/main.service';
 
+import {LoginEOSService} from 'eos-ulm';
 
 @Component({
     selector: 'active-orders',
@@ -12,7 +13,14 @@ export class ActiveOrdersComponent implements OnInit, OnDestroy {
     @Input() dataSource;
     @Input() tabs;
 
-    constructor(public mainService: MainService){}
+    @Output() changeTab: EventEmitter<any> = new EventEmitter();
+
+    constructor(public mainService: MainService, public loginEOSService: LoginEOSService){}
+
+    selectTab(name){
+    	this.mainService.activeOrders = name;
+    	this.changeTab.emit();
+    }
 
     ngOnInit() {}
 

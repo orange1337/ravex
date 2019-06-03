@@ -23,7 +23,7 @@
 <div class="container-fluid">
     <div class="row sm-gutters bottom-container mt-3">
             <div class="col-xl-12">
-                <active-orders [columns]="displayedColumnsBalances" [tabs]="['active orders', 'historical orders']" [dataSource]="dataSourceBalances"></active-orders>
+                <active-orders [columns]="displayedColumnsActiveOrders" [tabs]="['active orders', 'historical orders']" [dataSource]="dataSourceActiveOrders" (changeTab)="changeTabActiveView($event)"></active-orders>
             </div>
     </div>
 </div>

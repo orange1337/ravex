@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { MainService } from '../../services/main.service';
 
+import { LoginEOSService } from 'eos-ulm';
 
 @Component({
     selector: 'balances-left',
@@ -12,7 +13,7 @@ export class BalancesComponent implements OnInit, OnDestroy {
     @Input() dataSource;
     @Input() tabs;
 
-    constructor(public mainService: MainService){}
+    constructor(public mainService: MainService, public loginEOSService: LoginEOSService){}
 
     ngOnInit() {}
 

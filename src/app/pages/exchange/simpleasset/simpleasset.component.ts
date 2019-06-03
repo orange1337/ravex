@@ -17,9 +17,11 @@ export class SimpleassetComponent implements OnInit {
   displayedColumns = ['symbol', 'price', 'change', 'volume'];
   displayedColumnsSells = ['price', 'qty', 'total'];
   displayedColumnsBalances = ['author', 'symbol', 'amount'];
-  dataSource: any;
-  dataSourceSells: any;
-  dataSourceBalances: any;
+  displayedColumnsActiveOrders = ['pair', 'author', 'type', 'amount', 'price', 'total'];
+  dataSource = [];
+  dataSourceSells = [];
+  dataSourceBalances = [];
+  dataSourceActiveOrders: any = [];
   coinsList = {};
 
   getCoinsTable(){
@@ -58,19 +60,47 @@ export class SimpleassetComponent implements OnInit {
           });
   }
 
+  getActiveOrders(){
+        this.dataSourceActiveOrders = null;
+        this.mainService.getActiveOrders()
+            .subscribe((res: any) => {
+                this.displayedColumnsActiveOrders = ['pair', 'author', 'type', 'amount', 'price', 'total'];
+                this.dataSourceActiveOrders = this.mainService.generateOrdersArr(res);
+              }, err => {  
+                console.error(err);
+              });
+  }
+
+  getMyHistoryOrders(){
+        this.dataSourceActiveOrders = null;
+        this.mainService.getMyOrdersHistory()
+            .subscribe((res: any) => {
+                this.displayedColumnsActiveOrders = ['date', 'pair', 'author', 'type', 'amount', 'price', 'total', 'status'];
+                this.dataSourceActiveOrders = this.mainService.generateOrdersArr(res);
+              }, err => {  
+                console.error(err);
+              });
+  }
+
   updateTokenView(event){
       this.mainService.updateHeader.emit(this.coinsList[this.mainService.ftid]);
       this.getOrderSells();
   }
  
+  changeTabActiveView(event){
+      if (this.mainService.activeOrders === 'active orders'){
+          this.getActiveOrders();
+      } else if (this.mainService.activeOrders === 'historical orders'){
+          this.getMyHistoryOrders();
+      }
+  }
 
   ngOnInit() {
   	this.getCoinsTable();
   	this.getOrderSells();
     this.loginEOSService.loggedIn.subscribe(() => {
-        console.log('ScatterJS', this.loginEOSService.ScatterJS);
-        console.log('eosTock', this.loginEOSService.eosTock);
         this.getBalances();
+        this.getActiveOrders();
     });
   }
 

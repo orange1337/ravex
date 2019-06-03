@@ -22,10 +22,11 @@ export class OrdersBookComponent implements OnInit, OnDestroy, AfterViewInit {
     scrollToBottom(): void {
       try {
           this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
-      } catch(err) { }                 
+      } catch(err) { console.error(err); }                 
     }
 
-    ngOnInit() {}
+    ngOnInit() {
+    }
     
     ngAfterViewInit(){
         this.scrollToBottom();

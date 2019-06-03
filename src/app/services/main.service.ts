@@ -1,5 +1,8 @@
 import { Injectable, EventEmitter, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { LoginEOSService } from 'eos-ulm';
+
+import * as moment from 'moment';
 
 @Injectable()
 export class MainService {
@@ -11,8 +14,9 @@ export class MainService {
     public author = 'prospectorsa';
     public ftid = '100000000000048';
     public logo = (window.innerWidth <= 500) ? 'favicon_t.png': 'ravex.svg';
+    public activeOrders = 'active orders';
 
-    constructor(private http: HttpClient){}
+    constructor(private http: HttpClient, public loginEOSService: LoginEOSService){}
 
     getSAcoins(){
         return this.http.get('/api/v1/ft/coins');
@@ -20,6 +24,33 @@ export class MainService {
     
     getSAsells(author, symbol){
         return this.http.get(`/api/v1/ft/market?skip=0&limit=20&author=${author}&symbol=${symbol}`);
+    }
+
+    getActiveOrders(){
+        return this.http.get(`/api/v1/ft/opened/${this.loginEOSService.accountName}`);
+    }
+    getMyOrdersHistory(){
+        return this.http.get(`/api/v1/ft/my/history/${this.loginEOSService.accountName}`);
+    }
+
+    generateOrdersArr(data){
+       if (!data) {
+         return;
+       }
+       let result = [];
+       data.forEach(elem => {
+            result.push({
+                date: moment(elem.time).format('lll'),
+                status: elem.status,
+                author: elem.author,
+                symbol: elem.symbol,
+                amount: elem.qtyNum,
+                price: elem.priceNum,
+                total: (elem.qtyNum * elem.priceNum).toFixed(4),
+                type: (elem.owner !== this.loginEOSService.accountName) ? 'Buy' : 'Sell'
+            });
+       });
+       return result;
     }
 
     generetCoinsArr(data) {

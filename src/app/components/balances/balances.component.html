@@ -26,6 +26,13 @@
         <tr mat-header-row *matHeaderRowDef="columns; sticky: true"></tr>
         <tr mat-row *matRowDef="let row; columns: columns;"></tr>
       </table>
-      <div class="empty-container" *ngIf="!dataSource">Empty</div>
+      <div class="main-spinner" *ngIf="!dataSource">
+        <mat-progress-spinner color="primary" mode="indeterminate" [diameter]="40"></mat-progress-spinner>
+      </div>
+  
+      <div class="empty-container" *ngIf="!dataSource?.length">
+          <span *ngIf="loginEOSService.connected">Empty</span>
+          <span *ngIf="!loginEOSService.connected">Please Login first</span>
+      </div>
     </div>
 </div>

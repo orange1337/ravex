@@ -195,6 +195,25 @@ module.exports = function(router, config, request, log, mongoMain, eos, wrapper)
 		res.json(items);
 	});
 
+	router.get('/api/v1/ft/my/history/:owner', async (req, res) => {
+		let skip 	= Number(req.query.skip) || 0;
+		let limit 	= Number(req.query.limit) || limitDef;
+		let owner 	= req.params.owner;
+		if (skip < 0){
+			res.status(401).send(`Wrong Skip ${skip}`)
+		}
+		if (limit <= 0 || limit > limitDef){
+			res.status(401).send(`Limit from 0 till ${limitDef}`)
+		}
+		let match = { owner, active: false };
+		let [err, items] = await wrapper.to(assetJoinQuery(SELLS_FT_DB, match, skip, limit));
+		if (err){
+			log.error(err);
+			return res.status(500).end();
+		}
+		res.json(items);
+	});
+
 	router.post('/api/v1/ft/items/ids', async (req, res) => {
 		let ids = req.body.ftids;
 		let [err, items] = await wrapper.to(ASSETS_FT_DB.find({ ftid: { $in: ids } }, 'ftid data symbol issuer'));

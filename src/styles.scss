@@ -109,6 +109,10 @@ html, body {
 * {
     outline: none !important;
 }
+.form-control:focus{
+    outline: none !important;
+    box-shadow: none !important;
+}
 .crypt-dark { 
 	margin-top: 100px; 
 	font-family: "ClanProNews", "Helvetica Neue", sans-serif;
@@ -205,8 +209,8 @@ a{
     overflow-y: scroll; 
 }
 .grid-table-bottom{
-    height: calc(39vh - 5px);
-    min-height: 299px;
+    height: calc(39vh - 2.5px);
+    min-height: 300px;
     background: #1a2748;
     overflow-y: scroll;
 }
@@ -265,7 +269,7 @@ a{
     border: none;
 }
 .form-control{
-    height: 2rem;
+    height: 1.7rem;
     font-size: 0.8rem;
 }
 .contrast-color{
@@ -341,6 +345,12 @@ footer a:hover{
 .login-wallet-text, .login-wallet-others {
     color: #455a89 !important;
 }
+.lds-ellipsis div{
+    background: #27d8db !important;
+}
+.loader-popup-container{
+    background: rgba(24, 37, 72, 0.7) !important;
+}
 //  end popup
 
 #toasta .toast.toasta-theme-material {
@@ -358,7 +368,9 @@ footer a:hover{
 .mat-menu-item:hover{
     color: #27d8db;
 }
-
+.buy-sell-fee{
+    font-size: 11px;
+}
 
 
 

@@ -527,6 +527,7 @@ g[opacity="0.4"]{
 .menu-red a:hover{
     border-bottom: none !important;
     background: #e2513e;
+    border-radius: 5px;
 }
 .menu-green{
     background: #48c079;
@@ -538,6 +539,7 @@ g[opacity="0.4"]{
 .menu-green a:hover{
     border-bottom: none !important;
     background: #30ad62 !important;
+    border-radius: 5px;
 }
 
 /*---------------------------------- 
@@ -793,13 +795,13 @@ table th{
     border-top: 1px solid #f1f1f1;
 }
 .crypt-dark .crypt-buy{
-    padding: 20px;
-    border-top: 1px solid #1d2755;
-    border-right: 1px solid #1d2755;
+    padding: 16px;
+    border-top: 1px solid #1f2d51;
+    border-right: 1px solid #1f2d51;
 }
 .crypt-dark .crypt-sell{
-    padding: 20px;
-    border-top: 1px solid #1d2755;
+    padding: 16px;
+    border-top: 1px solid #1f2d51;
 }
 
 /*0--- market Capacity ----*/

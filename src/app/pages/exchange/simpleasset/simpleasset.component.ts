@@ -16,7 +16,7 @@ export class SimpleassetComponent implements OnInit {
 
   displayedColumns = ['symbol', 'price', 'change', 'volume'];
   displayedColumnsSells = ['price', 'qty', 'total'];
-  displayedColumnsBalances = ['symbol', 'amount', 'value'];
+  displayedColumnsBalances = ['author', 'symbol', 'amount'];
   dataSource: any;
   dataSourceSells: any;
   dataSourceBalances: any;

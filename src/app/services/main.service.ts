@@ -14,7 +14,8 @@ export class MainService {
     public author = 'prospectorsa';
     public ftid = '100000000000048';
     public logo = (window.innerWidth <= 500) ? 'favicon_t.png': 'ravex.svg';
-    public activeOrders = 'active orders';
+    public activeOrders = 0;
+    public tradeH = 0;
 
     constructor(private http: HttpClient, public loginEOSService: LoginEOSService){}
 
@@ -31,6 +32,26 @@ export class MainService {
     }
     getMyOrdersHistory(){
         return this.http.get(`/api/v1/ft/my/history/${this.loginEOSService.accountName}`);
+    }
+
+    getTradeHistory(){
+        return this.http.get(`/api/v1/ft/trade/history/${this.symbol}/?skip=0&limit=100`);
+    }
+
+    generateOrdersHistoryArr(data){
+       if (!data) {
+         return;
+       }
+       let result = [];
+       data.forEach(elem => {
+            result.push({
+                date: moment(elem.time).format('LLL'),
+                price: elem.priceNum,
+                qty: elem.qtyNum,
+                type: (elem.type === 'BUY') ? 'Buy' : 'Sell'
+            });
+       });
+       return result;
     }
 
     generateOrdersArr(data){

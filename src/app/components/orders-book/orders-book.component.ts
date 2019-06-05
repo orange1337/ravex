@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnDestroy,  ElementRef, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy,  ElementRef, ViewChild, AfterViewChecked, Output, EventEmitter } from '@angular/core';
 import { MainService } from '../../services/main.service';
 
 
@@ -6,12 +6,16 @@ import { MainService } from '../../services/main.service';
     selector: 'orders-book',
     templateUrl: './orders-book.component.html'
 })
-export class OrdersBookComponent implements OnInit, OnDestroy, AfterViewInit {
+export class OrdersBookComponent implements OnInit, OnDestroy, AfterViewChecked {
 
     @Input() columns;
+    @Input() columnsHistory;
     @Input() dataSource;
+    @Input() dataSourceBuys;
+    @Input() dataSourceHistory;
     @Input() tabs;
     @Input() coinsList;
+    @Output() changeTab: EventEmitter<any> = new EventEmitter();
 
     tabIndex = 0;
 
@@ -22,13 +26,22 @@ export class OrdersBookComponent implements OnInit, OnDestroy, AfterViewInit {
     scrollToBottom(): void {
       try {
           this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
-      } catch(err) { console.error(err); }                 
+      } catch(err) { }                 
     }
 
-    ngOnInit() {
+    createGradient(elem, index, color){
+        let rowColor = (index % 2 === 0) ? '#16203f' : '#172442';
+        return `linear-gradient(to right, ${rowColor} ${elem.percentage}%, ${color} 0%)`;
     }
-    
-    ngAfterViewInit(){
+
+    selectTab(elem){
+        this.mainService.tradeH = elem;
+        this.changeTab.emit();
+    }
+
+    ngOnInit() {}
+
+    ngAfterViewChecked(){
         this.scrollToBottom();
     }
 

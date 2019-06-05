@@ -14,15 +14,18 @@ export class SimpleassetComponent implements OnInit {
               public scatterService: ScatterService,
               public loginEOSService: LoginEOSService) { }
 
-  displayedColumns = ['symbol', 'price', 'change', 'volume'];
-  displayedColumnsSells = ['price', 'qty', 'total'];
-  displayedColumnsBalances = ['author', 'symbol', 'amount'];
+  displayedColumns             = ['symbol', 'price', 'change', 'volume'];
+  displayedColumnsSells        = ['price', 'qty', 'total'];
+  displayedColumnsBalances     = ['author', 'symbol', 'amount'];
   displayedColumnsActiveOrders = ['pair', 'author', 'type', 'amount', 'price', 'total'];
-  dataSource = [];
-  dataSourceSells = [];
-  dataSourceBalances = [];
-  dataSourceActiveOrders: any = [];
-  coinsList = {};
+  displayedColumnsHistory      = ['date', 'price', 'qty'];
+  dataSource                   = [];
+  dataSourceSells              = [];
+  dataSourceHistory            = [];
+  dataSourceBuys               = [];
+  dataSourceBalances           = [];
+  dataSourceActiveOrders: any  = [];
+  coinsList                    = {};
 
   getCoinsTable(){
   		this.mainService.getSAcoins()
@@ -39,10 +42,31 @@ export class SimpleassetComponent implements OnInit {
       this.dataSourceSells = null;
   		this.mainService.getSAsells(this.mainService.author, this.mainService.symbol)
   						.subscribe((res: any) => {
-  							this.dataSourceSells = res.orders;
+  							this.dataSourceSells = this.countPercentage(res.orders);
   						}, err => {	
   							console.error(err);
   						})
+  }
+  countPercentage(data){
+      if (!data) return;
+      let max = 0;
+      data.forEach(elem => {
+          let vol = elem.priceNum * elem.qtyNum;
+          max = (vol > max) ? vol : max;
+      });
+      data.forEach(elem => {
+            elem.percentage = 100 - elem.priceNum * elem.qtyNum / max * 100;
+      });
+      return data;
+  }
+  getTradeHistory(){
+        this.dataSourceHistory = null;
+        this.mainService.getTradeHistory()
+            .subscribe((res: any) => {
+                 this.dataSourceHistory = this.mainService.generateOrdersHistoryArr(res);
+              }, err => {  
+                 console.error(err);
+              });
   }
 
   getBalances(){
@@ -82,16 +106,24 @@ export class SimpleassetComponent implements OnInit {
               });
   }
 
+
   updateTokenView(event){
       this.mainService.updateHeader.emit(this.coinsList[this.mainService.ftid]);
       this.getOrderSells();
   }
  
   changeTabActiveView(event){
-      if (this.mainService.activeOrders === 'active orders'){
+      if (this.mainService.activeOrders === 0){
           this.getActiveOrders();
-      } else if (this.mainService.activeOrders === 'historical orders'){
+      } else if (this.mainService.activeOrders === 1){
           this.getMyHistoryOrders();
+      }
+  }
+  changeHistoryTabs(){
+      if (this.mainService.tradeH === 0){
+          this.getOrderSells();
+      } else if (this.mainService.tradeH === 1){
+          this.getTradeHistory();
       }
   }
 

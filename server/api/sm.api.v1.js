@@ -1,6 +1,7 @@
 /**
  * API for Fungible Tokens, created by orange1337
  */
+const { checkSkipLimit } = require('../utils/main.middlewares');
 
 module.exports = function(router, config, request, log, mongoMain, eos, wrapper) {
 
@@ -92,22 +93,16 @@ module.exports = function(router, config, request, log, mongoMain, eos, wrapper)
 		res.json({ coins, price, vol });
 	});
 
-	router.get('/api/v1/ft/market', async (req, res) => {
-		let skip 		= Number(req.query.skip) || 0;
-		let limit 		= Number(req.query.limit) || limitDef;
-		if (skip < 0){
-			res.status(401).send(`Wrong Skip ${skip}`)
-		}
-		if (limit <= 0 || limit > limitDef){
-			res.status(401).send(`Limit from 0 till ${limitDef}`)
-		}
+	router.get('/api/v1/ft/market', checkSkipLimit, async (req, res) => {
+		let skip    = req.query.skip;
+		let limit   = req.query.limit;
 		let author 	= (req.query.author && req.query.author !== 'undefined') ? req.query.author : null;
 		let symbol 	= (req.query.symbol && req.query.symbol !== 'undefined') ? req.query.symbol : null;
 
 		let query = [
 			{ $match: { active: true, author, symbol } },
-			{ $addFields: { priceOne: { $divide: [ "$priceNum", "$qtyNum" ] } } },
-			{ $sort: { priceOne: -1 } },
+			//{ $addFields: { priceOne: { $divide: [ "$priceNum", "$qtyNum" ] } } },
+			{ $sort: { priceNum: -1 } },
 			{ $skip: skip },
 			{ $limit: limit }
 		];
@@ -176,16 +171,10 @@ module.exports = function(router, config, request, log, mongoMain, eos, wrapper)
 		res.json(items);
 	});
 
-	router.get('/api/v1/ft/opened/:owner', async (req, res) => {
-		let skip 	= Number(req.query.skip) || 0;
-		let limit 	= Number(req.query.limit) || limitDef;
+	router.get('/api/v1/ft/opened/:owner', checkSkipLimit, async (req, res) => {
+		let skip    = req.query.skip;
+		let limit   = req.query.limit;
 		let owner 	= req.params.owner;
-		if (skip < 0){
-			res.status(401).send(`Wrong Skip ${skip}`)
-		}
-		if (limit <= 0 || limit > limitDef){
-			res.status(401).send(`Limit from 0 till ${limitDef}`)
-		}
 		let match = { owner, active: true };
 		let [err, items] = await wrapper.to(assetJoinQuery(SELLS_FT_DB, match, skip, limit));
 		if (err){
@@ -195,16 +184,10 @@ module.exports = function(router, config, request, log, mongoMain, eos, wrapper)
 		res.json(items);
 	});
 
-	router.get('/api/v1/ft/my/history/:owner', async (req, res) => {
-		let skip 	= Number(req.query.skip) || 0;
-		let limit 	= Number(req.query.limit) || limitDef;
+	router.get('/api/v1/ft/my/history/:owner', checkSkipLimit, async (req, res) => {
+		let skip    = req.query.skip;
+		let limit   = req.query.limit;
 		let owner 	= req.params.owner;
-		if (skip < 0){
-			res.status(401).send(`Wrong Skip ${skip}`)
-		}
-		if (limit <= 0 || limit > limitDef){
-			res.status(401).send(`Limit from 0 till ${limitDef}`)
-		}
 		let match = { owner, active: false };
 		let [err, items] = await wrapper.to(assetJoinQuery(SELLS_FT_DB, match, skip, limit));
 		if (err){
@@ -214,8 +197,21 @@ module.exports = function(router, config, request, log, mongoMain, eos, wrapper)
 		res.json(items);
 	});
 
+	router.get('/api/v1/ft/trade/history/:symbol', checkSkipLimit, async (req, res) => {
+		let skip    = req.query.skip;
+		let limit   = req.query.limit;
+		let symbol  = req.params.symbol;
+		let match 	= { symbol, status: "CLOSED" };
+		let [err, items] = await wrapper.to(assetJoinQuery(SELLS_FT_DB, match, skip, limit));
+		if (err){
+			log.error(err);
+			return res.status(500).end();
+		}
+		res.json(items);
+	});
+
 	router.post('/api/v1/ft/items/ids', async (req, res) => {
-		let ids = req.body.ftids;
+		let ids 	= req.body.ftids;
 		let [err, items] = await wrapper.to(ASSETS_FT_DB.find({ ftid: { $in: ids } }, 'ftid data symbol issuer'));
 		if (err){
 			log.error(err);
@@ -224,17 +220,11 @@ module.exports = function(router, config, request, log, mongoMain, eos, wrapper)
 		res.json(items);
 	});
 
-	router.get('/api/v1/ft/orders/:account', async (req, res) => {
-		let skip 		= Number(req.query.skip) || 0;
-		let limit 		= Number(req.query.limit) || limitDef;
-		if (skip < 0){
-			res.status(401).send(`Wrong Skip ${skip}`)
-		}
-		if (limit <= 0 || limit > limitDef){
-			res.status(401).send(`Limit from 0 till ${limitDef}`)
-		}
+	router.get('/api/v1/ft/orders/:account', checkSkipLimit, async (req, res) => {
+		let skip    = req.query.skip;
+		let limit   = req.query.limit;
 		let owner 	= String(req.params.account);
-		let match  = { active: true, owner };
+		let match   = { active: true, owner };
 
 		let [err, items] = await wrapper.to(assetJoinQuery(SELLS_FT_DB, match, skip, limit));
 		if (err){
@@ -244,15 +234,9 @@ module.exports = function(router, config, request, log, mongoMain, eos, wrapper)
 		res.json(items);
 	});
 
-	router.get('/api/v1/ft/claims/:account', async (req, res) => {
-		let skip 		= Number(req.query.skip) || 0;
-		let limit 		= Number(req.query.limit) || limitDef;
-		if (skip < 0){
-			res.status(401).send(`Wrong Skip ${skip}`)
-		}
-		if (limit <= 0 || limit > limitDef){
-			res.status(401).send(`Limit from 0 till ${limitDef}`)
-		}
+	router.get('/api/v1/ft/claims/:account', checkSkipLimit, async (req, res) => {
+		let skip      = req.query.skip;
+		let limit     = req.query.limit;
 		let offeredto = String(req.params.account);
 		let match  	  = { active: true, offeredto };
 
@@ -264,17 +248,11 @@ module.exports = function(router, config, request, log, mongoMain, eos, wrapper)
 		res.json(items);
 	});
 
-	router.get('/api/v1/ft/canceloffers/:account', async (req, res) => {
-		let skip 		= Number(req.query.skip) || 0;
-		let limit 		= Number(req.query.limit) || limitDef;
-		if (skip < 0){
-			res.status(401).send(`Wrong Skip ${skip}`)
-		}
-		if (limit <= 0 || limit > limitDef){
-			res.status(401).send(`Limit from 0 till ${limitDef}`)
-		}
-		let owner = String(req.params.account);
-		let match = { active: true, owner };
+	router.get('/api/v1/ft/canceloffers/:account', checkSkipLimit, async (req, res) => {
+		let skip    = req.query.skip;
+		let limit   = req.query.limit;
+		let owner   = String(req.params.account);
+		let match   = { active: true, owner };
 
 		let [err, items] = await wrapper.to(assetJoinQuery(CLAIMS_FT_DB, match, skip, limit));
 		if (err){
@@ -285,10 +263,10 @@ module.exports = function(router, config, request, log, mongoMain, eos, wrapper)
 	});
 
 	router.get('/api/v1/ft/notify/:account', async (req, res) => {
-		let account 	= String(req.params.account);
-		let claims 		= CLAIMS_FT_DB.find({offeredto: account, active: true}).countDocuments();
-		let orders 		= SELLS_FT_DB.find({owner: account, active: true}).countDocuments();
-		let cancel 		= CLAIMS_FT_DB.find({owner: account, active: true}).countDocuments();
+		let account = String(req.params.account);
+		let claims 	= CLAIMS_FT_DB.find({offeredto: account, active: true}).countDocuments();
+		let orders 	= SELLS_FT_DB.find({owner: account, active: true}).countDocuments();
+		let cancel 	= CLAIMS_FT_DB.find({owner: account, active: true}).countDocuments();
 
 		try {
 			claims = await claims;
@@ -300,6 +278,7 @@ module.exports = function(router, config, request, log, mongoMain, eos, wrapper)
 		}
 		res.json({orders, claims, cancel});
 	});
+
 }
 
 

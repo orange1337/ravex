@@ -202,6 +202,9 @@ a{
 .main-red{
     color: #f86050 !important;
 }
+.main-blue-text{
+    color: #455a89 !important;
+}
 .grid-table{
     height: calc(48vh - 39px);
     min-height: 320px;
@@ -374,7 +377,12 @@ footer a:hover{
 .table-date-header{
     width: 17%;
 }
-
+.trade-history{
+    height: calc(88vh - 42px);
+    min-height: 644px;
+    background: #1a2748;
+    overflow-y: scroll;
+}
 
 
 

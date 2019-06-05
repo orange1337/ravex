@@ -24,6 +24,7 @@ const log       = new logWrapper(`server`);
 const wrapper   = new asyncWrapper(`server`);
 
 process.on('uncaughtException', (err) => {
+    log.info(err);
     logSlack(` ======= UncaughtException Main Server : `, err);
 });
 

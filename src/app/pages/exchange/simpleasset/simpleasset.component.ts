@@ -109,7 +109,8 @@ export class SimpleassetComponent implements OnInit {
 
   updateTokenView(event){
       this.mainService.updateHeader.emit(this.coinsList[this.mainService.ftid]);
-      this.getOrderSells();
+      this.changeTabActiveView(event);
+      this.changeHistoryTabs(event);
   }
  
   changeTabActiveView(event){

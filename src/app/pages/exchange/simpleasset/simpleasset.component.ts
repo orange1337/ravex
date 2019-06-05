@@ -119,7 +119,7 @@ export class SimpleassetComponent implements OnInit {
           this.getMyHistoryOrders();
       }
   }
-  changeHistoryTabs(){
+  changeHistoryTabs(event){
       if (this.mainService.tradeH === 0){
           this.getOrderSells();
       } else if (this.mainService.tradeH === 1){

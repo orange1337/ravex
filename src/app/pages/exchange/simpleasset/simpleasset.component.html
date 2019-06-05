@@ -2,8 +2,8 @@
   <div class="row sm-gutters">
 		
 		<div class="col-md-6 col-lg-6 col-xl-3 col-xxl-2 right-container">
-         <tokens-left [columns]="displayedColumns" [tabs]="['EOS']" [coinsList]="coinsList" [dataSource]="dataSource" (changeToken)="updateTokenView($event)"></tokens-left>
-         <balances-left [columns]="displayedColumnsBalances" [tabs]="['total balances']" [dataSource]="dataSourceBalances"></balances-left>
+         <tokens-left [columns]="displayedColumns" [tabs]="tabsTokens" [coinsList]="coinsList" [dataSource]="dataSource" (changeToken)="updateTokenView($event)"></tokens-left>
+         <balances-left [columns]="displayedColumnsBalances" [tabs]="tabsBalances" [dataSource]="dataSourceBalances"></balances-left>
 		</div>
 
 		<div class="col-md-6 col-lg-6 col-xl-6 col-xxl-8">
@@ -14,7 +14,7 @@
     </div>
     
     <div class="col-md-6 col-lg-6 col-xl-3 col-xxl-2 left-container">
-        <orders-book [columns]="displayedColumnsSells" [columnsHistory]="displayedColumnsHistory" [tabs]="['orders book', 'trade history']" [dataSource]="dataSourceSells" [dataSourceBuys]="dataSourceBuys" [dataSourceHistory]="dataSourceHistory" [coinsList]="coinsList" (changeTab)="changeHistoryTabs($event)"></orders-book>
+        <orders-book [columns]="displayedColumnsSells" [columnsHistory]="displayedColumnsHistory" [tabs]="tabsBook" [dataSource]="dataSourceSells" [dataSourceBuys]="dataSourceBuys" [dataSourceHistory]="dataSourceHistory" [coinsList]="coinsList" (changeTab)="changeHistoryTabs($event)"></orders-book>
     </div>
 
 	</div>
@@ -23,7 +23,7 @@
 <div class="container-fluid">
     <div class="row sm-gutters bottom-container mt-3">
             <div class="col-xl-12">
-                <active-orders [columns]="displayedColumnsActiveOrders" [tabs]="['active orders', 'historical orders']" [dataSource]="dataSourceActiveOrders" (changeTab)="changeTabActiveView($event)"></active-orders>
+                <active-orders [columns]="displayedColumnsActiveOrders" [tabs]="tabsHistory" [dataSource]="dataSourceActiveOrders" (changeTab)="changeTabActiveView($event)"></active-orders>
             </div>
     </div>
 </div>

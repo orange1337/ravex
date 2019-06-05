@@ -21,7 +21,11 @@ const routes: Routes = [
     		{
         		path: 'eos',
         		component: EostradeComponent
-    		}
+    		},
+            {
+               path : 'wallet',
+               loadChildren : './account/account.module#AccountModule'
+            }
     	]
     }
 ];

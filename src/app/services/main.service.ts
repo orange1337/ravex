@@ -1,7 +1,6 @@
 import { Injectable, EventEmitter, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { LoginEOSService } from 'eos-ulm';
-
 import * as moment from 'moment';
 
 @Injectable()
@@ -13,11 +12,21 @@ export class MainService {
     public symbol = 'PTS';
     public author = 'prospectorsa';
     public ftid = '100000000000048';
-    public logo = (window.innerWidth <= 500) ? 'favicon_t.png': 'ravex.svg';
+    public logo = 'ravex-icon.png'; //(window.innerWidth <= 500) ? 'ravex-icon.png': 'ravex.svg';
     public activeOrders = 0;
     public tradeH = 0;
 
-    constructor(private http: HttpClient, public loginEOSService: LoginEOSService){}
+    constructor(private http: HttpClient, 
+                public loginEOSService: LoginEOSService){
+    }
+
+    lang = localStorage.getItem('lang') || 'en';
+
+    translateLang(lang, translate){
+        localStorage.setItem('lang', lang);
+        translate.use(lang);
+        this.lang = lang;
+    }
 
     getSAcoins(){
         return this.http.get('/api/v1/ft/coins');

@@ -136,6 +136,10 @@ a{
     margin-left: -20px;
     margin-top: -20px;
 }
+.wallet-wrapper{
+    margin-left: 25px;
+    margin-right: 25px;
+}
 .text-right{
     text-align: right;
 }
@@ -156,6 +160,9 @@ a{
 }
 .mat-header-cell{
     color: #27d8db;
+}
+.lang-active{
+    color: #27d8db !important;
 }
 .mat-cell, .mat-footer-cell{
     font-size: 13px;
@@ -239,10 +246,10 @@ a{
 }
 .header-coin-grid-container{
     display: flex;
-    padding-left: 0;
+    padding-left: 25px;
 }
 .header-coin-grid{
-    margin-left: 25px;
+    margin-left: 30px;
 }
 .header-coin-grid:first-child{
     margin-left: 0;
@@ -383,7 +390,9 @@ footer a:hover{
     background: #1a2748;
     overflow-y: scroll;
 }
-
+.orders-table-bottom{
+    border-bottom: 1px solid rgba(22, 31, 63, 0.5);
+}
 
 
 @media only screen and (max-width: 500px) {

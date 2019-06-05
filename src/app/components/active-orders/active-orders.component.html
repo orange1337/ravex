@@ -1,50 +1,50 @@
 <ul class="nav nav-tabs" id="crypt-tab">
-    <li role="presentation" *ngFor="let elem of tabs; let i = index;" (click)="selectTab(i)"><a [ngClass]="{'active': i === mainService.activeOrders}">{{elem}}</a></li>
+    <li role="presentation" *ngFor="let elem of tabs; let i = index;" (click)="selectTab(i)"><a [ngClass]="{'active': i === mainService.activeOrders}">{{elem | translate}}</a></li>
 </ul>
 <div class="example-container mat-elevation-z8 grid-table-bottom-left">
   <table mat-table [dataSource]="dataSource">
 
     <ng-container matColumnDef="date">
-      <th mat-header-cell *matHeaderCellDef class="table-date-header"> Date </th>
+      <th mat-header-cell *matHeaderCellDef class="table-date-header"> {{ "DATE" | translate }} </th>
       <td mat-cell *matCellDef="let element" class="main-blue-text"> {{ element?.date }} </td>
     </ng-container>
 
     <ng-container matColumnDef="pair">
-      <th mat-header-cell *matHeaderCellDef> Pair </th>
+      <th mat-header-cell *matHeaderCellDef> {{ "PAIR" | translate }} </th>
       <td mat-cell *matCellDef="let element"> 
         <strong>{{ element?.symbol }}/{{ mainService.currency }}</strong> 
       </td>
     </ng-container>
 
     <ng-container matColumnDef="type">
-      <th mat-header-cell *matHeaderCellDef> Type</th>
+      <th mat-header-cell *matHeaderCellDef> {{ "TYPE" | translate }} </th>
       <td mat-cell *matCellDef="let element" [ngClass]="{'main-green': element?.type === 'Buy', 'main-red': element?.type === 'Sell'}"> 
           {{ element?.type }} 
       </td>
     </ng-container>
 
     <ng-container matColumnDef="author">
-      <th mat-header-cell *matHeaderCellDef> Author </th>
+      <th mat-header-cell *matHeaderCellDef> {{ "AUTHOR" | translate }} </th>
       <td mat-cell *matCellDef="let element"> {{ element?.author }} </td>
     </ng-container>
 
     <ng-container matColumnDef="amount">
-      <th mat-header-cell *matHeaderCellDef> Amount </th>
+      <th mat-header-cell *matHeaderCellDef> {{ "AUTHOR" | translate }} </th>
       <td mat-cell *matCellDef="let element"> {{ element?.amount }} </td>
     </ng-container>
 
     <ng-container matColumnDef="price">
-      <th mat-header-cell *matHeaderCellDef> Price({{mainService.currency}}) </th>
+      <th mat-header-cell *matHeaderCellDef> {{ "PRICE" | translate }} ({{mainService.currency}}) </th>
       <td mat-cell *matCellDef="let element"> {{ element?.price }} </td>
     </ng-container>
 
     <ng-container matColumnDef="total">
-      <th mat-header-cell *matHeaderCellDef> Total({{mainService.currency}}) </th>
+      <th mat-header-cell *matHeaderCellDef> {{ "TOTAL" | translate }} ({{mainService.currency}}) </th>
       <td mat-cell *matCellDef="let element"> {{ element?.total }} </td>
     </ng-container>
          
     <ng-container matColumnDef="status">
-      <th mat-header-cell *matHeaderCellDef> Status </th>
+      <th mat-header-cell *matHeaderCellDef> {{ "STATUS" | translate }} </th>
       <td mat-cell *matCellDef="let element" [ngClass]="{'main-green': element?.status === 'CLOSED', 'main-red': element?.status === 'CANCELED'}"> 
         <strong>{{ element?.status }}</strong> 
       </td>
@@ -58,7 +58,7 @@
     </div>
   
       <div class="empty-container" *ngIf="!dataSource?.length">
-          <span *ngIf="loginEOSService.connected">Empty</span>
-          <span *ngIf="!loginEOSService.connected">Please Login first</span>
+          <span *ngIf="loginEOSService.connected">{{ "EMPTY" | translate }}</span>
+          <span *ngIf="!loginEOSService.connected">{{ "LOGIN_FIRST" | translate }}</span>
       </div>
 </div>

@@ -1,9 +1,9 @@
 <div class="crypt-boxed-area mt-3">
-   <div class="crypt-bg-head"><b class="crypt-up">BUY</b> / <b class="crypt-down">SELL</b></div>
+   <div class="crypt-bg-head"><b class="crypt-up">{{"BUY" | translate}}</b> / <b class="crypt-down">{{"SELL" | translate}}</b></div>
    <div class="row no-gutters buy-sell-container">
        <div class="col-md-6">
            <div class="crypt-buy-sell-form">
-               <p class="contrast-color">Buy <span class="crypt-up">{{mainService?.symbol}}</span> <span class="fright">Available: <b class="crypt-up">20.00 {{mainService?.currency}}</b></span></p>
+               <p class="contrast-color">{{"BUY" | translate}} <span class="crypt-up">{{mainService?.symbol}}</span> <span class="fright">{{"AVAILABLE" | translate}}: <b class="crypt-up">20.00 {{mainService?.currency}}</b></span></p>
                 <div class="crypt-buy">
                     <div class="input-group mb-2">
                         <input type="text" class="form-control" placeholder="0.02323476" readonly>
@@ -30,16 +30,16 @@
                         </mat-button-toggle-group>
                     </div>
                     <div class="mb-2 buy-sell-fee">
-                        <p class="contrast-color">Fee: <span class="fright">0.1% = 0.02 {{mainService?.currency}}</span></p>
-                        <p class="contrast-color">You will pay: <span class="fright">0.09834 {{mainService?.currency}}</span></p>
+                        <p class="contrast-color">{{"FEE" | translate}}: <span class="fright">0.1% = 0.02 {{mainService?.currency}}</span></p>
+                        <p class="contrast-color">{{"YOU_WILL_PAY" | translate}}: <span class="fright">0.09834 {{mainService?.currency}}</span></p>
                     </div>
-                    <div class="menu-green"><a class="crypt-button-green-full">Buy</a></div>
+                    <div class="menu-green"><a class="crypt-button-green-full">{{"BUY" | translate}}</a></div>
                 </div>
             </div>
         </div>
         <div class="col-md-6">
             <div class="crypt-buy-sell-form">
-                <p class="contrast-color">Sell <span class="crypt-down">{{mainService?.symbol}}</span> <span class="fright">Available: <b class="crypt-down">1000.00 {{mainService?.symbol}}</b></span></p>
+                <p class="contrast-color">{{"SELL" | translate}} <span class="crypt-down">{{mainService?.symbol}}</span> <span class="fright">{{"AVAILABLE" | translate}}: <b class="crypt-down">1000.00 {{mainService?.symbol}}</b></span></p>
                 <div class="crypt-sell">
                     <div class="input-group mb-2">
                         <input type="text" class="form-control" placeholder="0.02323476" readonly>
@@ -66,10 +66,10 @@
                         </mat-button-toggle-group>
                     </div>
                     <div class="mb-2 buy-sell-fee">
-                        <p class="contrast-color">Fee: <span class="fright">0.1% = 0.02 {{mainService?.currency}}</span></p>
-                        <p class="contrast-color">You will get: <span class="fright">0.09834 {{mainService?.currency}}</span></p>
+                        <p class="contrast-color">{{"FEE" | translate}}: <span class="fright">0.1% = 0.02 {{mainService?.currency}}</span></p>
+                        <p class="contrast-color">{{"YOU_WILL_GET" | translate}}: <span class="fright">0.09834 {{mainService?.currency}}</span></p>
                     </div>
-                    <div class="menu-red"><a class="crypt-button-red-full">Sell</a></div>
+                    <div class="menu-red"><a class="crypt-button-red-full">{{"SELL" | translate}}</a></div>
                 </div>
             </div>
         </div>

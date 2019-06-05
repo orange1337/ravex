@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { MainService } from '../../services/main.service';
-
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
     selector: 'tokens-left',
@@ -15,7 +15,8 @@ export class TokensComponent implements OnInit, OnDestroy {
 
     @Output() changeToken: EventEmitter<any> = new EventEmitter();
 
-    constructor(public mainService: MainService){}
+    constructor(public mainService: MainService,
+                public translate: TranslateService){}
 
     selectTab(name){
     	this.mainService.currency = name;

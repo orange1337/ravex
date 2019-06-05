@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, OnDestroy,  ElementRef, ViewChild, AfterViewChecked, Output, EventEmitter } from '@angular/core';
 import { MainService } from '../../services/main.service';
-
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
     selector: 'orders-book',
@@ -19,7 +19,8 @@ export class OrdersBookComponent implements OnInit, OnDestroy, AfterViewChecked 
 
     tabIndex = 0;
 
-    constructor(public mainService: MainService){}
+    constructor(public mainService: MainService,
+                public translate: TranslateService){}
 
     @ViewChild('scrollMe') private myScrollContainer: ElementRef;
 

@@ -3,7 +3,7 @@
         <div class="container-full-width">
             <div class="crypt-header">
                 <div class="row">
-                    <div class="col-xl-3 col-lg-4 col-md-4 col-sm-5">
+                    <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
                         <div class="row">
                             <div class="col-xs-2">
                                 <div class="crypt-logo">
@@ -23,38 +23,43 @@
                                     </a>
                                 </div>
                             </div>
+                            <div class="col-xs-8 header-coin-grid-container">
+                                <div class="header-coin-grid header-coin-info">
+                                    <p class="header-price">{{coinInfo?.price || mainService.priceNull}} {{mainService?.currency}}</p>
+                                    <p [ngClass]="{'crypt-up' : coinInfo?.change > 0, 'crypt-down' : coinInfo?.change < 0}">{{coinInfo?.change || mainService.priceNull}}%</p>
+                                </div>
+                                <div class="header-coin-grid header-coin-info">
+                                    <p class="header-coin-info-title">24h {{ "LOWEST" | translate }}</p>
+                                    <p class="crypt-down">{{coinInfo?.min || mainService.priceNull}} {{mainService?.currency}}</p>
+                                </div>
+                                <div class="header-coin-grid header-coin-info">
+                                    <p class="header-coin-info-title">24h {{ "HIGHEST" | translate }}</p>
+                                    <p class="crypt-up">{{coinInfo?.max || mainService.priceNull}} {{mainService?.currency}}</p>
+                                </div>
+                                <div class="header-coin-grid header-coin-info">
+                                    <p class="header-coin-info-title">24h {{ "VOLUME" | translate }}</p>
+                                    <p>{{coinInfo?.vol || mainService.priceNull}} {{mainService.symbol}}</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-sm-4 col-md-4 col-lg-4 header-coin-grid-container">
-                        <div class="header-coin-grid header-coin-info">
-                            <p class="header-price">{{coinInfo?.price || mainService.priceNull}} {{mainService?.currency}}</p>
-                            <p [ngClass]="{'crypt-up' : coinInfo?.change > 0, 'crypt-down' : coinInfo?.change < 0}">{{coinInfo?.change || mainService.priceNull}}%</p>
-                        </div>
-                        <div class="header-coin-grid header-coin-info">
-                            <p class="header-coin-info-title">24h Lowest</p>
-                            <p class="crypt-down">{{coinInfo?.min || mainService.priceNull}} {{mainService?.currency}}</p>
-                        </div>
-                        <div class="header-coin-grid header-coin-info">
-                            <p class="header-coin-info-title">24h Highest</p>
-                            <p class="crypt-up">{{coinInfo?.max || mainService.priceNull}} {{mainService?.currency}}</p>
-                        </div>
-                        <div class="header-coin-grid header-coin-info">
-                            <p class="header-coin-info-title">24h Vol.</p>
-                            <p>{{coinInfo?.vol || mainService.priceNull}} {{mainService.symbol}}</p>
-                        </div>
-                    </div>
-                    <div class="col-xl-5ноу  col-lg-5 col-md-5 d-none d-md-block d-lg-block">
+                    <div class="col-xl-5  col-lg-5 col-md-5 d-none d-md-block d-lg-block">
                         <ul class="crypt-heading-menu fright">
-                            <li><a routerLink="/trade/sa" class="crypt-active">Simple Assets</a></li>
+                            <li><a routerLink="/trade/sa" [ngClass]="{'crypt-active': router?.url === '/trade/sa'}">Simple Assets</a></li>
                             <!--<li><a routerLink="/trade">EOS main</a></li>-->
-                            <li><a>My Account</a></li>
-                            <li><a>EN <i class="far fa-chevron-down"></i></a></li>
+                            <li><a routerLink="/trade/wallet/ft" [ngClass]="{'crypt-active': router?.url === '/trade/wallet/ft'}">{{ "PROFILE" | translate }}</a></li>
+                            <li>
+                                <a [matMenuTriggerFor]="menu">{{mainService.lang}} <i class="far fa-chevron-down"></i></a>
+                                <mat-menu #menu="matMenu" xPosition="before">
+                                    <button mat-menu-item *ngFor="let lang of translate.getLangs()" (click)="mainService.translateLang(lang, translate)" [ngClass]="{'lang-active': lang === translate.currentLang}"> {{lang}} </button>
+                                </mat-menu>
+                            </li>
                             <span class="hr-right"></span>
-                            <li *ngIf="!loginEOSService.connected"><a class="btn-login" (click)="loginEOSService.openPopup()">login</a></li>
+                            <li *ngIf="!loginEOSService.connected"><a class="btn-login" (click)="loginEOSService.openPopup()">{{ "LOGIN" | translate }}</a></li>
                             <li *ngIf="loginEOSService.connected">
                                 <a class="btn-logout" [matMenuTriggerFor]="beforeMenu">{{loginEOSService.accountName}} <i class="far fa-chevron-down"></i></a> 
                                 <mat-menu #beforeMenu="matMenu" xPosition="before">
-                                  <button mat-menu-item (click)="loginEOSService.logout()">logout</button>
+                                  <button mat-menu-item (click)="loginEOSService.logout()">{{ "LOGOUT" | translate }}</button>
                                 </mat-menu>
                             </li>
                         </ul>
@@ -67,7 +72,7 @@
 <router-outlet></router-outlet>
 
 <footer>
-    <div>ravex.io © all rights reversed 2019</div>
+    <div>ravex.io © {{ "RIGHTS" | translate }} 2019</div>
     <div>
         <a><i class="fab fa-twitter"></i> ravex_io</a>
         <a><i class="fab fa-telegram-plane"></i> ravex_io</a>

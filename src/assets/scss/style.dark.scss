@@ -83,12 +83,12 @@ g[opacity="0.4"]{
     display: none;
 }
 .crypt-logo{
-    padding: 27px;
+    padding: 18px;
     background: #17223f; //linear-gradient(to left, #0e162d9e, #1f2843);
     margin-left: 15px;
 }
 .crypt-logo img{
-    width: 88px !important;
+    width: 36px !important;
 }
 /*--- colors ----*/
 .crypt-yellow{
@@ -605,7 +605,6 @@ g[opacity="0.4"]{
 /*---  Side menu bar ----*/
 .crypt-side-menu{
     height: 100vh;
-    position: fixed;
     left: 0;
     width: 205px;
     padding: 25px;

@@ -1,24 +1,21 @@
 <ul class="nav nav-tabs" id="crypt-tab">
-     <li role="presentation" *ngFor="let elem of tabs; let i = index;" (click)="selectTab(elem)"><a [ngClass]="{'active': elem === mainService.currency}">{{elem}}</a></li>
+     <li role="presentation" *ngFor="let elem of tabs; let i = index;" (click)="selectTab(elem)"><a [ngClass]="{'active': elem === mainService.currency}">{{elem | translate}}</a></li>
 </ul>
 <div class="example-container mat-elevation-z8 grid-table">
 	<table mat-table [dataSource]="dataSource">
 			
-	<!-- Position Column -->
 	<ng-container matColumnDef="symbol">
-	  <th mat-header-cell *matHeaderCellDef> Symbol </th>
+	  <th mat-header-cell *matHeaderCellDef> {{ "SYMBOL" | translate }} </th>
 	  <td mat-cell *matCellDef="let element">
 	    {{ element?._id?.symbol }} 
 	  </td>
 	</ng-container>
 			
-	<!-- Name Column -->
 	<ng-container matColumnDef="price">
-	  <th mat-header-cell *matHeaderCellDef> Price (EOS) </th>
+	  <th mat-header-cell *matHeaderCellDef> {{ "PRICE" | translate }} (EOS) </th>
 	  <td mat-cell *matCellDef="let element"> {{ coinsList[element?._id?.ftid]?.price || mainService.priceNull }} </td>
 	</ng-container>
 			
-	<!-- Weight Column -->
 	<ng-container matColumnDef="change">
 	  <th mat-header-cell *matHeaderCellDef> 24h % </th>
 	  <td mat-cell *matCellDef="let element"> 
@@ -26,9 +23,8 @@
       </td>
 	</ng-container>
 			
-	<!-- Symbol Column -->
 	<ng-container matColumnDef="volume">
-	  <th mat-header-cell *matHeaderCellDef class="text-right"> 24h Vol. </th>
+	  <th mat-header-cell *matHeaderCellDef class="text-right"> 24h {{ "VOLUME" | translate }} </th>
 	  <td mat-cell *matCellDef="let element" class="text-right"> {{ coinsList[element?._id?.ftid]?.vol || mainService.priceNull }} </td>
 	</ng-container>
 			
@@ -41,5 +37,5 @@
 		<mat-progress-spinner color="primary" mode="indeterminate" [diameter]="40"></mat-progress-spinner>
 	</div>
 	
-  	<div class="empty-container" *ngIf="!dataSource?.length">Empty</div>
+  	<div class="empty-container" *ngIf="!dataSource?.length">{{ "EMPTY" | translate }}</div>
 </div>

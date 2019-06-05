@@ -13,6 +13,7 @@ import { BuySellComponent } from '../../components/buy-sell/buy-sell.component';
 import { ActiveOrdersComponent } from '../../components/active-orders/active-orders.component';
 import { OrdersBookComponent } from '../../components/orders-book/orders-book.component';
 
+
 import { MatTabsModule,
 		 MatTableModule,
      MatButtonToggleModule,
@@ -20,10 +21,8 @@ import { MatTabsModule,
      MatMenuModule
 } from '@angular/material';
 
-import { MainService } from '../../services/main.service';
 import { ScatterService } from '../../services/scatter.service';
-
-import { environment } from '../../../environments/environment';
+import { TranslateModule } from '@ngx-translate/core';
 import { LoginEOSModule } from 'eos-ulm';
 
 @NgModule({
@@ -46,18 +45,9 @@ import { LoginEOSModule } from 'eos-ulm';
     MatButtonToggleModule,
     MatProgressSpinnerModule,
     MatMenuModule,
-    LoginEOSModule.forRoot({
-          appName: environment.appName,
-          httpEndpoint: environment.Eos.httpEndpoint,
-          chain: environment.chain,
-          verbose: environment.Eos.verbose,
-          blockchain: environment.network.blockchain,
-          host: environment.network.host,
-          port: environment.network.port,
-          protocol: environment.network.protocol,
-          expireInSeconds: environment.network.expireInSeconds
-    }),
+    LoginEOSModule,
+    TranslateModule
   ],
-  providers: [MainService, ScatterService]
+  providers: [ScatterService]
 })
 export class ExchangeModule { }

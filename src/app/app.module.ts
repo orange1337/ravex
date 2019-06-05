@@ -13,6 +13,10 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 export function createTranslateLoader(http: HttpClient) {
    return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
+import { MainService } from './services/main.service';
+
+import { environment } from '../environments/environment';
+import { LoginEOSModule } from 'eos-ulm';
 
 @NgModule({
   declarations: [
@@ -29,10 +33,21 @@ export function createTranslateLoader(http: HttpClient) {
           useFactory: createTranslateLoader,
           deps: [HttpClient]
        }
+    }),
+    LoginEOSModule.forRoot({
+          appName: environment.appName,
+          httpEndpoint: environment.Eos.httpEndpoint,
+          chain: environment.chain,
+          verbose: environment.Eos.verbose,
+          blockchain: environment.network.blockchain,
+          host: environment.network.host,
+          port: environment.network.port,
+          protocol: environment.network.protocol,
+          expireInSeconds: environment.network.expireInSeconds
     })
   ],
-  providers: [],
-  exports: [TranslateModule],
+  providers: [MainService],
+  exports: [TranslateModule, LoginEOSModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

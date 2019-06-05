@@ -19,6 +19,10 @@ export class SimpleassetComponent implements OnInit {
   displayedColumnsBalances     = ['author', 'symbol', 'amount'];
   displayedColumnsActiveOrders = ['pair', 'author', 'type', 'amount', 'price', 'total'];
   displayedColumnsHistory      = ['date', 'price', 'qty'];
+  tabsTokens                   = ['EOS'];
+  tabsBalances                 = ['TOTAL_BALANCES'];
+  tabsBook                     = ['ORDERS_BOOK', 'TRADE_HISTORY']; 
+  tabsHistory                  = ['ACTIVE_ORDERS', 'HISTORICAL_ORDERS'];
   dataSource                   = [];
   dataSourceSells              = [];
   dataSourceHistory            = [];

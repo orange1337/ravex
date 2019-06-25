@@ -51,7 +51,7 @@ module.exports = function(router, config, request, log, mongoMain, eos, wrapper)
 			{ $match: { active: true } },
 			{ 
 			  $group: { 
-				_id: { ftid: "$ftid", symbol: "$symbol" },
+				_id: { ftid: "$ftid", symbol: "$symbol", author: "$author" },
 				qty: { $sum: "$qtyNum" }
 			  } 
 			},
@@ -62,7 +62,7 @@ module.exports = function(router, config, request, log, mongoMain, eos, wrapper)
 			{ $sort: { time: 1 } },
 			{ 
 			  $group: { 
-				_id: { ftid: "$ftid", symbol: "$symbol" },
+				_id: { ftid: "$ftid", symbol: "$symbol", author: "$author" },
 				price: { $last: "$priceNum" }
 			  } 
 			}
@@ -72,7 +72,7 @@ module.exports = function(router, config, request, log, mongoMain, eos, wrapper)
 			{ $sort: { time: 1 } },
 			{ 
 			  $group: { 
-				_id: { ftid: "$ftid", symbol: "$symbol" },
+				_id: { ftid: "$ftid", symbol: "$symbol", author: "$author" },
 				priceMin: { $min: "$priceNum" },
 				priceMax: { $max: "$priceNum" },
 				volume: { $sum: "$qtyNum" }

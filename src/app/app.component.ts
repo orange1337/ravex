@@ -17,4 +17,5 @@ export class AppComponent {
 	}
   lang = localStorage.getItem('lang') || 'en';
 
+
 }

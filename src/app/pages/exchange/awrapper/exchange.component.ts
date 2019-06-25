@@ -22,7 +22,13 @@ export class ExchangeComponent implements OnInit {
   ngOnInit() {
   		this.mainService.updateHeader.subscribe( (res: any) => {
   				this.coinInfo = res;
+          console.log(this.coinInfo);
   		});
+      this.loginEOSService.loggedIn.subscribe(res => {
+          this.scatterService.getAccount()
+              .then(res => this.mainService.accountInfo = res)
+              .catch(err => console.error(err));
+      });
   }
 
 }

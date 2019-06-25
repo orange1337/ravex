@@ -6,15 +6,22 @@ import * as moment from 'moment';
 @Injectable()
 export class MainService {
 
+    public fee = 0.1;
     public currency = 'EOS';
     public updateHeader = new EventEmitter<any>();
     public priceNull = '0.0000';
-    public symbol = 'PTS';
-    public author = 'prospectorsa';
-    public ftid = '100000000000048';
+    public symbol;
+    public ftid;
+    public tokenImg;
+    public author;
     public logo = 'ravex-icon.png'; //(window.innerWidth <= 500) ? 'ravex-icon.png': 'ravex.svg';
     public activeOrders = 0;
     public tradeH = 0;
+    public langsName = {
+        'en': 'EN',
+        'zh': '中文'
+    };
+    public accountInfo;
 
     constructor(private http: HttpClient, 
                 public loginEOSService: LoginEOSService){

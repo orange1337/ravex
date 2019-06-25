@@ -12,7 +12,7 @@ import { BalancesComponent } from '../../components/balances/balances.component'
 import { BuySellComponent } from '../../components/buy-sell/buy-sell.component';
 import { ActiveOrdersComponent } from '../../components/active-orders/active-orders.component';
 import { OrdersBookComponent } from '../../components/orders-book/orders-book.component';
-
+import { FormsModule } from '@angular/forms';
 
 import { MatTabsModule,
 		 MatTableModule,
@@ -46,7 +46,8 @@ import { LoginEOSModule } from 'eos-ulm';
     MatProgressSpinnerModule,
     MatMenuModule,
     LoginEOSModule,
-    TranslateModule
+    TranslateModule,
+    FormsModule
   ],
   providers: [ScatterService]
 })

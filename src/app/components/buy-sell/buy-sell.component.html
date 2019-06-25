@@ -1,77 +1,64 @@
 <div class="crypt-boxed-area mt-3">
    <div class="crypt-bg-head"><b class="crypt-up">{{"BUY" | translate}}</b> / <b class="crypt-down">{{"SELL" | translate}}</b></div>
    <div class="row no-gutters buy-sell-container">
-       <div class="col-md-6">
+       <div class="col-md-6" [ngClass]="{'blur': !loginEOSService.accountName}">
            <div class="crypt-buy-sell-form">
-               <p class="contrast-color">{{"BUY" | translate}} <span class="crypt-up">{{mainService?.symbol}}</span> <span class="fright">{{"AVAILABLE" | translate}}: <b class="crypt-up">20.00 {{mainService?.currency}}</b></span></p>
+               <p class="contrast-color">{{"BUY" | translate}} <span class="crypt-up">{{mainService?.symbol}}</span> <span class="fright">{{"AVAILABLE" | translate}}: <b class="crypt-up">{{ mainService.accountInfo?.core_liquid_balance || 0 }}</b></span></p>
                 <div class="crypt-buy">
                     <div class="input-group mb-2">
-                        <input type="text" class="form-control" placeholder="0.02323476" readonly>
+                        <input type="number" class="form-control" [(ngModel)]="buy.token" (change)="buyTokenCurrency()">
                         <div class="input-group-append"> <span class="input-group-text">{{mainService?.symbol}}</span> </div>
                     </div>
                     <div class="input-group mb-2">
-                        <input type="number" class="form-control">
+                        <input type="number" class="form-control" [(ngModel)]="buy.currency" (change)="buyTokenCurrency()">
                         <div class="input-group-append"> <span class="input-group-text">{{mainService?.currency}}</span> </div>
                     </div>
                     <div class="mb-2">
                         <mat-button-toggle-group #group="matButtonToggleGroup">
-                          <mat-button-toggle value="25">
-                            <span>25 %</span>
-                          </mat-button-toggle>
-                          <mat-button-toggle value="50">
-                            <span>50 %</span>
-                          </mat-button-toggle>
-                          <mat-button-toggle value="75">
-                            <span>75 %</span>
-                          </mat-button-toggle>
-                          <mat-button-toggle value="100">
-                            <span>100 %</span>
+                          <mat-button-toggle *ngFor="let pr of percentage;" [value]="pr" (click)="countPercentageBuy(pr)">
+                            <span>{{pr}} %</span>
                           </mat-button-toggle>
                         </mat-button-toggle-group>
                     </div>
                     <div class="mb-2 buy-sell-fee">
-                        <p class="contrast-color">{{"FEE" | translate}}: <span class="fright">0.1% = 0.02 {{mainService?.currency}}</span></p>
-                        <p class="contrast-color">{{"YOU_WILL_PAY" | translate}}: <span class="fright">0.09834 {{mainService?.currency}}</span></p>
+                        <p class="contrast-color">{{"FEE" | translate}}: <span class="fright">{{mainService.fee}}% = {{feeBuy.fee}}  {{mainService?.currency}}</span></p>
+                        <p class="contrast-color">{{"YOU_WILL_PAY" | translate}}: <span class="fright">{{feeBuy.pay}} {{mainService?.currency}}</span></p>
                     </div>
                     <div class="menu-green"><a class="crypt-button-green-full">{{"BUY" | translate}}</a></div>
                 </div>
             </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6" [ngClass]="{'blur': !loginEOSService.accountName}">
             <div class="crypt-buy-sell-form">
-                <p class="contrast-color">{{"SELL" | translate}} <span class="crypt-down">{{mainService?.symbol}}</span> <span class="fright">{{"AVAILABLE" | translate}}: <b class="crypt-down">1000.00 {{mainService?.symbol}}</b></span></p>
+                <p class="contrast-color">{{"SELL" | translate}} <span class="crypt-down">{{mainService?.symbol}}</span> <span class="fright">{{"AVAILABLE" | translate}}: <b class="crypt-down">{{totalBalances[mainService?.ftid] || 0}}</b></span></p>
                 <div class="crypt-sell">
                     <div class="input-group mb-2">
-                        <input type="text" class="form-control" placeholder="0.02323476" readonly>
+                        <input type="number" class="form-control" [(ngModel)]="sell.token" (change)="sellTokenCurrency()">
                         <div class="input-group-append"> <span class="input-group-text">{{mainService?.currency}}</span> </div>
                     </div>
                     <div class="input-group mb-2">
-                        <input type="number" class="form-control">
+                        <input type="number" class="form-control" [(ngModel)]="sell.currency" (change)="sellTokenCurrency()">
                         <div class="input-group-append"> <span class="input-group-text">{{mainService?.symbol}}</span> </div>
                     </div>
                     <div class="mb-2">
-                        <mat-button-toggle-group #group="matButtonToggleGroup">
-                          <mat-button-toggle value="25">
-                            <span>25 %</span>
-                          </mat-button-toggle>
-                          <mat-button-toggle value="50">
-                            <span>50 %</span>
-                          </mat-button-toggle>
-                          <mat-button-toggle value="75">
-                            <span>75 %</span>
-                          </mat-button-toggle>
-                          <mat-button-toggle value="100">
-                            <span>100 %</span>
+                       <mat-button-toggle-group #group="matButtonToggleGroup">
+                          <mat-button-toggle *ngFor="let pr of percentage;" [value]="pr" (click)="countPercentageSell(totalBalances[mainService?.ftid], pr)">
+                            <span>{{pr}} %</span>
                           </mat-button-toggle>
                         </mat-button-toggle-group>
                     </div>
                     <div class="mb-2 buy-sell-fee">
-                        <p class="contrast-color">{{"FEE" | translate}}: <span class="fright">0.1% = 0.02 {{mainService?.currency}}</span></p>
-                        <p class="contrast-color">{{"YOU_WILL_GET" | translate}}: <span class="fright">0.09834 {{mainService?.currency}}</span></p>
+                        <p class="contrast-color">{{"FEE" | translate}}: <span class="fright">{{mainService.fee}}% = {{feeSell.fee}} {{mainService?.currency}}</span></p>
+                        <p class="contrast-color">{{"YOU_WILL_GET" | translate}}: <span class="fright">{{feeSell.get}} {{mainService?.currency}}</span></p>
                     </div>
                     <div class="menu-red"><a class="crypt-button-red-full">{{"SELL" | translate}}</a></div>
                 </div>
             </div>
+        </div>
+        <div class="empty-container-buy-sell" *ngIf="!loginEOSService.accountName">
+          <div class="empty-container login-first-container">
+            <span>{{ "LOGIN_FIRST" | translate }}</span>
+          </div>
         </div>
     </div>
 </div>

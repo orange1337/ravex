@@ -11,34 +11,20 @@ export class ScatterService {
               private router: Router,
               private http: HttpClient) {}
 
-  buyItemFT(data: any) {
-        let memo = JSON.stringify({ftid: Number(data.sellid)});
-        this.loginEOSService.eos.transfer(this.loginEOSService.accountName, environment.market, data.priceString, memo, this.loginEOSService.options)
-           .then((result: any) => {
-                if (result && result.transaction_id && result.processed && result.processed.block_num) {
-                    this.loginEOSService.showMessage('Item(s) successfully bought!');
-                }
-           }).catch(err => {
-                this.loginEOSService.contractError(err);
-           });
+  showErr(message){
+      this.loginEOSService.contractError({ message });
   }
 
-  pushCustomTrx(fields, actionName, cb){
-        this.loginEOSService.eos.contract(environment.asset, {
-            accounts: [environment.network]
-        }).then(contract => {
-            contract[actionName](fields, this.loginEOSService.options)
-                    .then(result => {
-                         this.loginEOSService.showMessage('Trx successfully pushed!');
-                         cb(null);
-                    }).catch(err => {
-                         this.loginEOSService.contractError(err);
-                         cb(err);
-                    });
-        }).catch(err => {
-            this.loginEOSService.contractError(err);
-            cb(err);
-        });
+  buyItemFT(ftid, priceString) {
+      let memo = JSON.stringify({ ftid });
+      this.loginEOSService.eos.transfer(this.loginEOSService.accountName, environment.market, priceString, memo, this.loginEOSService.options)
+          .then((result: any) => {
+               if (result && result.transaction_id && result.processed && result.processed.block_num) {
+                   this.loginEOSService.showMessage('Item(s) successfully bought!');
+               }
+          }).catch(err => {
+               this.loginEOSService.contractError(err);
+          });
   }
 
   getAvailableItems() {

@@ -258,7 +258,7 @@ a{
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: #fff;
+    background: #17213f;
     margin-right: 10px;
     float: left;
 }
@@ -339,12 +339,16 @@ footer a:hover{
 .buy-sell-container{
     height: calc(33vh - 5px);
     min-height: 266px;
+    position: relative;
 }
 
 // style for popup login wallets
 #popup-window{
     z-index: 1000 !important;
     color: #fff !important;
+}
+.login-wallet{
+    border: 1px solid #2f4068 !important;
 }
 .login-wallet:hover{
     background: #16203f !important;
@@ -360,6 +364,9 @@ footer a:hover{
 }
 .loader-popup-container{
     background: rgba(24, 37, 72, 0.7) !important;
+}
+.popup-container{
+    background: #1e2c51 !important;
 }
 //  end popup
 
@@ -393,6 +400,33 @@ footer a:hover{
 .orders-table-bottom{
     border-bottom: 1px solid rgba(22, 31, 63, 0.5);
 }
+.login-first-container{
+    display: table;
+    width: 100%;
+    color: #26d8db;
+    top: 50%;
+    margin-top: -35px;
+    position: absolute;
+    left: -20px;
+}
+.empty-container-buy-sell{
+    background: rgba(22, 31, 63, 0.5);
+    position: absolute;
+    width: 100%;
+    top: 0;
+    height: 100%;
+}
+.blur{
+    filter: blur(1px);
+}
+.crypt-bg-head{
+    text-transform: uppercase;
+}
+
+
+
+
+
 
 
 @media only screen and (max-width: 500px) {

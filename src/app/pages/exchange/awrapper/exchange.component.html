@@ -15,7 +15,7 @@
                             <div class="col-xs-2">
                                 <div class="crypt-mega-dropdown-menu"> 
                                     <a  class="crypt-mega-dropdown-toggle">
-                                        <img alt="" class="coin-img" src="https://prospectors.io/auction/img/sets/pb.png">
+                                        <img alt="" class="coin-img" [src]="mainService.tokenImg">
                                         <div class="coin-header-name">
                                             <div>{{mainService?.currency}}/{{mainService.symbol}}</div>
                                             <div class="token-author">{{mainService.author}}</div>
@@ -49,9 +49,9 @@
                             <!--<li><a routerLink="/trade">EOS main</a></li>-->
                             <li><a routerLink="/trade/wallet/ft" [ngClass]="{'crypt-active': router?.url === '/trade/wallet/ft'}">{{ "PROFILE" | translate }}</a></li>
                             <li>
-                                <a [matMenuTriggerFor]="menu">{{mainService.lang}} <i class="far fa-chevron-down"></i></a>
+                                <a [matMenuTriggerFor]="menu">{{ mainService.langsName[mainService.lang] }} <i class="far fa-chevron-down"></i></a>
                                 <mat-menu #menu="matMenu" xPosition="before">
-                                    <button mat-menu-item *ngFor="let lang of translate.getLangs()" (click)="mainService.translateLang(lang, translate)" [ngClass]="{'lang-active': lang === translate.currentLang}"> {{lang}} </button>
+                                    <button mat-menu-item *ngFor="let lang of translate.getLangs()" (click)="mainService.translateLang(lang, translate)" [ngClass]="{'lang-active': lang === translate.currentLang}"> {{ mainService.langsName[lang] }} </button>
                                 </mat-menu>
                             </li>
                             <span class="hr-right"></span>

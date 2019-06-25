@@ -30,13 +30,20 @@ export class SimpleassetComponent implements OnInit {
   dataSourceBalances           = [];
   dataSourceActiveOrders: any  = [];
   coinsList                    = {};
+  totalBalances                = {}; 
 
   getCoinsTable(){
   		this.mainService.getSAcoins()
   						.subscribe((res: any) => {
-  							this.dataSource = res.coins; 
+                this.dataSource = res.coins;
+                if (this.dataSource[0]){
+                    this.mainService.ftid = this.dataSource[0]._id.ftid;
+                    this.mainService.symbol = this.dataSource[0]._id.symbol;
+                    this.mainService.author = this.dataSource[0]._id.author;
+                }
                 this.coinsList = this.mainService.generetCoinsArr(res);
                 this.mainService.updateHeader.emit(this.coinsList[this.mainService.ftid]);
+                this.getOrderSells();
   						}, err => {	
   							console.error(err);
   						})
@@ -46,7 +53,15 @@ export class SimpleassetComponent implements OnInit {
       this.dataSourceSells = null;
   		this.mainService.getSAsells(this.mainService.author, this.mainService.symbol)
   						.subscribe((res: any) => {
-  							this.dataSourceSells = this.countPercentage(res.orders);
+  							  this.dataSourceSells = this.countPercentage(res.orders);
+                  if (res.tokenInfo){
+                      try{
+                        this.mainService.tokenImg = JSON.parse(res.tokenInfo.data).img;
+                        console.log(this.mainService.tokenImg);
+                      } catch(e){
+                        console.error('Img parse error', e);
+                      }
+                  }
   						}, err => {	
   							console.error(err);
   						})
@@ -81,6 +96,7 @@ export class SimpleassetComponent implements OnInit {
               }
               this.dataSourceBalances = res.rows.map(elem => {
                     let splitElem = elem.balance.split(" ");
+                    this.totalBalances[elem.id] = elem.balance;
                     return {id: elem.id, author: elem.author, symbol: splitElem[1], qty: splitElem[0]};
               });
           }).catch(err => {
@@ -133,8 +149,7 @@ export class SimpleassetComponent implements OnInit {
   }
 
   ngOnInit() {
-  	this.getCoinsTable();
-  	this.getOrderSells();
+  	this.getCoinsTable(); 	
     this.loginEOSService.loggedIn.subscribe(() => {
         this.getBalances();
         this.getActiveOrders();
